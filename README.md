@@ -1,7 +1,8 @@
-# BasicReactNative
+# Catatan Untuk ReactNative
 >**Hal yang perlu disiapkan**
 ```
-- Harta
-- Tahta
-- Wanita
+- Boostnote
+- Import ini ke aplikasi boostnotenya
 ```
+
+https://boostnote.io/
