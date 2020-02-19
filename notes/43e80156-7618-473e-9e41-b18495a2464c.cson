@@ -1,0 +1,17 @@
+createdAt: "2020-02-13T15:59:56.024Z"
+updatedAt: "2020-02-19T06:48:18.705Z"
+type: "MARKDOWN_NOTE"
+folder: "a5f2ebc888dff0082c06"
+title: "Version beda terus padahal di package.json udh sama"
+tags: []
+content: '''
+  ## Version beda terus padahal di package.json udh sama 
+  >**Masuk Ke directory prject kemudian**
+  ```
+  npm react-native start --reset-cache
+  npm start -- --reset-cache
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

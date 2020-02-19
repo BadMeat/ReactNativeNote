@@ -1,0 +1,81 @@
+createdAt: "2020-02-12T14:58:05.352Z"
+updatedAt: "2020-02-17T06:58:18.442Z"
+type: "MARKDOWN_NOTE"
+folder: "a5f2ebc888dff0082c06"
+title: "Auth"
+tags: []
+content: '''
+  ## Auth
+  
+  >**Auth**
+  >
+  ```
+  npm install @react-native-firebase/auth
+  ```
+  
+  >**Signin**
+  >
+  ```js
+  signin = async (email, password) => {
+      try {
+          const result = await auth().signInWithEmailAndPassword(email, password)
+          console.log(result.user.email)
+          this.setState({
+              result: result.user.email
+          })
+      } catch (e) {
+          this.setState({
+              result: e.message
+          })
+          console.log('Ini error yaaa ' + e.message);
+      }
+  }
+  ```
+  >**Register**
+  >
+  ```js
+  daftar = async (email, password) => {
+      try {
+          await auth().createUserWithEmailAndPassword(email, password);
+      } catch (e) {
+          console.log('Ini error yaaa ' + e.message);
+      }
+  }
+  ```
+  
+  >**Check Login**
+  >
+  ```js
+  checkLogin = () => {
+      try {
+          auth().onAuthStateChanged((user) => {
+              if (user) {
+                  this.setState({
+                      result: user.email
+                  })
+                  console.log('sudah login' + JSON.stringify(user))
+              } else {
+                  console.log('belum login')
+              }
+          })
+      } catch (error) {
+          console.log(error)
+      }
+  }
+  ```
+  
+  >**Logout**
+  >
+  ```js
+  logout = async () => {
+      try {
+          await auth().signOut()
+      } catch (error) {
+          console.log(e)
+      }
+  }
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

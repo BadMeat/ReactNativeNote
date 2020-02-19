@@ -1,0 +1,104 @@
+createdAt: "2020-02-11T02:26:45.020Z"
+updatedAt: "2020-02-17T04:30:34.789Z"
+type: "MARKDOWN_NOTE"
+folder: "8b77374a268e72541d40"
+title: "API"
+tags: []
+content: '''
+  ## API
+  
+  ***Axios***
+  
+  - npm install axios
+  
+  **Setup Axios**
+  ```js
+  import axios from 'axios'
+  
+  export default axios.create({
+      baseURL: 'https://api.yelp.com/v3/businesses',
+      headers: {
+          Authorization: 'Bearer nEP-GCLQvOu08IdJiFTNAdet8fWNvn_aIq_zryI-NSdkMSOiFJzJO-EJ348gISWznTsSfcr1F9lYYRBF4fSBTWlo-xBI-liGZaW5u8yV-5I4Sejq7O2lp8UrNTNBXnYx'
+      }
+  })
+  ```
+  >**GET**
+  
+  ```js
+  callApi = async () => {
+      try {
+          const e = await yelps.get('/search', {
+              params: {
+                  limit: 50,
+                  location: this.state.search
+              }
+          })
+          console.log(e.data.businesses)
+          this.setResult(e.data.businesses)
+      } catch (error) {
+          Alert.alert("Something error")
+      }  
+  }
+  ```
+  >**POST**
+  ```js
+  postApi = async () => {
+      try {
+          const response = await LocalApi.post('/posts', {
+              name: "Wahid",
+              avatar_url: "https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg",
+              subtitle: "Vice QWZZZZ",
+          })
+          console.log(response.data)
+          this.setState({
+              list: [...this.state.list, response.data]
+          })
+      } catch (error) {
+          console.log(error)
+      }
+  }
+  ```
+  
+  >**DELETE**
+  >
+  ```js
+  deleteApi = async (id) => {
+      try {
+          await LocalApi.delete('/posts/' + id)
+          this.setState({
+              list: this.state.list.filter(item => item.id != id)
+          })
+      } catch (error) {
+          console.log(error)
+      }
+  }
+  ```
+  >**PUT**
+  >
+  ```js
+  updateApi = async (id) => {
+      try {
+          const result = await LocalApi.put('/posts/' + id, {
+              name: this.state.name,
+              avatar_url: this.state.avatar_url,
+              subtitle: this.state.subtitle
+          })
+          Alert.alert('Update berhasil ' + result.data)
+          this.obj.callApi()
+          this.props.navigation.goBack()
+      } catch (error) {
+          console.log('Update Gagal ' + error)
+      }
+  }
+  ```
+  >**Maping**
+  >
+  ```js
+  result.map((item) => (
+      item.image_url.trim() == "" ? 'https://facebook.github.io/react-native/img/tiny_logo.png' : item.image_url
+  ))
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

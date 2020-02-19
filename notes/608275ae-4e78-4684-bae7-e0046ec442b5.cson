@@ -1,0 +1,78 @@
+createdAt: "2020-02-14T08:49:28.209Z"
+updatedAt: "2020-02-18T07:39:32.243Z"
+type: "MARKDOWN_NOTE"
+folder: "a5f2ebc888dff0082c06"
+title: "RealTimeDatabase"
+tags: []
+content: '''
+  ## RealTimeDatabase
+  
+  >**Ref**
+  >
+  [Quick Start \\| React Native Firebase | Invertase](https://invertase.io/oss/react-native-firebase/v6/database/quick-start)
+  [Firebase Realtime Database With React Native - MindOrks - Medium](https://medium.com/mindorks/firebase-realtime-database-with-react-native-5f357c6ee13b)
+  ```
+  npm install @react-native-firebase/database
+  ```
+  
+  >**Create Data**
+  >
+  ```js
+  constructor(props) {
+      super(props)
+      this.state = {
+          nama: '',
+          keluhan: '',
+          isLoading: false
+      }
+  }
+  ```
+  ```js
+  saveData = () => {
+      this.setState({ isLoading: true },
+          async () => {
+              // Get the users ID
+              const uid = auth().currentUser.uid;
+  
+              // Create a reference
+              const ref = database().ref(`/users/${uid}`);
+  
+              ref.push({
+                  uid: uid,
+                  name: this.state.nama,
+                  keluhan: this.state.keluhan
+              }).then((data) => {
+                  // Success
+                  console.log(data)
+                  this.setState({
+                      nama: '',
+                      keluhan: '',
+                      isLoading: false
+                  })
+                  Alert.alert('Berhasil jadi simpanan')
+              }).catch((error) => {
+                  console.log(error)
+              })
+          })
+  }
+  ```
+  
+  >**Read Data**
+  >
+  ```js
+  getData = async () => {
+      // Get the users ID
+      const uid = auth().currentUser.uid;
+      // Create a reference
+      const ref = database().ref(`/users/${uid}`);
+      // Fetch the data snapshot
+      const snapshot = await ref.once('value');
+      const r = snapshot.val()
+      console.log("valukuuu brooo "+JSON.stringify(r))
+  }
+  
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

@@ -1,0 +1,33 @@
+createdAt: "2020-02-19T07:03:49.731Z"
+updatedAt: "2020-02-19T07:33:21.740Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Android MultiDex"
+tags: []
+content: '''
+  ## Android MultiDex
+  
+  >**app/build.gradle**
+  >
+  ```
+  defaultConfig {
+      ......
+      versionCode 1
+      versionName "1.0"
+      multiDexEnabled true
+  }
+  ```
+  ```
+  dependencies {
+      ......
+      implementation 'com.android.support:multidex:1.0.3'
+      ......
+  }
+  ```
+  
+  ## Hah? Min sdk21 ? r u kidding meeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee?
+  
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

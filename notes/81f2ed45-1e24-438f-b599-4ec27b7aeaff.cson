@@ -1,0 +1,250 @@
+createdAt: "2020-02-11T02:11:54.461Z"
+updatedAt: "2020-02-17T05:01:02.527Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Navigation"
+tags: []
+content: '''
+  ## Navigation
+  
+  ```
+  - npm install @react-navigation/native @react-navigation/stack
+  ```
+  
+  >**Ini sesuai dengan kebutuhan saja sih**
+  ```
+  - npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+  ```
+  
+  >**Website**
+  ```
+  https://facebook.github.io/react-native/docs/navigation#react-navigation
+  ```
+  >**App.js**
+  >
+  
+  ```js
+  import 'react-native-gesture-handler';
+  import * as React from 'react';
+  import { NavigationContainer } from '@react-navigation/native';
+  import { createStackNavigator } from '@react-navigation/stack';
+  import Profile from './Screen/Profile';
+  import Home from './Screen/Home';
+  
+  const Stack = createStackNavigator();
+  
+  function App() {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: '#f4511e',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}>
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{ title: 'Beranda' }} />
+          <Stack.Screen name="Details" component={Profile} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
+  
+  export default App;
+  ```
+  
+  >**Home**
+  >
+  ```js
+  import React, { Component } from 'react'
+  import { Text, View, Button } from 'react-native'
+  
+  export default class Home extends Component {
+      constructor(props){
+          super(props)
+      }
+  
+      render() {
+          return (
+              <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                  <Text>Home HOEEEE</Text>
+                  <Button
+                      title="Go to Details"
+                      onPress={() => this.props.navigation.navigate('Details')}/>
+              </View>
+          )
+      }
+  }
+  import React, { Component } from 'react'
+  import { Text, View, Button } from 'react-native'
+  
+  export default class Home extends Component {
+      constructor(props){
+          super(props)
+      }
+  
+      render() {
+          return (
+              <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                  <Text>Home HOEEEE</Text>
+                  <Button
+                      title="Go to Details"
+                      onPress={() => this.props.navigation.navigate('Details')}/>
+              </View>
+          )
+      }
+  }
+  
+  ```
+  
+  >**Profile**
+  >
+  ```js
+  import React, { Component } from 'react'
+  import {  View, Text, Alert } from 'react-native'
+  import SearchBar from '../Component/SearchBar';
+  import yelps from '../api/yelps';
+  
+  
+  export default class Profile extends Component {
+  
+      constructor(props){
+          super(props)
+          this.state = {
+              search: '',
+              result: []
+          }
+      }
+  
+      setSearch = (search) => {
+          this.setState({
+              search: search
+          })
+      }
+  
+      setResult = (result) => {
+          this.setState({
+              result: result
+          })
+      }
+  
+      callApi = async () => {
+          try {
+              const e = await yelps.get('/search', {
+                  params: {
+                      limit: 50,
+                      location: this.state.search
+                  }
+              })
+              console.log(e.data.businesses)
+              this.setResult(e.data.businesses)
+          } catch (error) {
+              Alert.alert("Something error")
+          }
+  
+          
+      }
+  
+      onSubmit = () => {
+          Alert.alert('Hello Dunia')
+          this.callApi()
+      }
+  
+      render() {
+          return (
+              <View>
+                  <SearchBar 
+                      state={this.state} 
+                      setSearch={(search) => this.setSearch(search)}
+                      onSubmit={() => this.onSubmit()}/>
+                  <Text>{this.state.search}</Text>
+                  <Text>{this.state.result.length}</Text>
+              </View>
+          )
+      }
+  }
+  
+  ```
+  
+  >**Passing param**
+  ```js
+  -- Lempar
+  <Button
+      onPress={() => this.props.navigation.navigate('New Screen',{
+          nama: 'Bencoleng'
+      })}>
+          <Text>New Screen</Text>
+  </Button>
+  
+  -- Ambil
+  const {nama} = this.props.route.params;
+  ```
+  
+  >**Passing method supaya bisa dipanggil di screen lain**
+  >
+  ```js
+  --- Lempar
+  onPress={() => this.props.navigation.navigate('DetailScreen', {
+      id: item.id,
+      nama: item.name,
+      avatar_url: item.avatar_url,
+      subtitle: item.subtitle,
+      showAll: this.callApi.bind(this)
+  })}
+  
+  --- Ambil
+  this.props.route.params.showAll()
+  ```
+  
+  >**Button di toolbar Header diset melalui Screen**
+  >
+  
+  ```js
+  this.props.navigation.setOptions({
+      headerRight: () => (
+          <Button
+              onPress = {() => this.setNama("Haaay")}
+              title = "Update Count"
+          />
+      ),
+  })
+  
+  return (
+      <View>
+          <Text></Text>
+          <Text> {this.state.nama} </Text>
+      </View>
+  )
+  ```
+  
+  >**Custom Header di Screen**
+  >
+  
+  ```js
+  this.props.navigation.setOptions({
+      title: 'Ini Screen Baru',
+      headerRight: () => (
+          <Button
+              onPress={() => this.setAngka(this.state.angka + 10)}
+              title="Update Count"
+          />
+      ),
+      headerStyle: {
+          backgroundColor: 'green',
+      },
+      headerTintColor: 'white',
+      headerTitleStyle: {
+          fontWeight: 'bold',
+      },
+  })
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

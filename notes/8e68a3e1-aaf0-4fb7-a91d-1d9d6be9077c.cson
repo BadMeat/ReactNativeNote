@@ -1,0 +1,115 @@
+createdAt: "2020-02-10T07:39:10.436Z"
+updatedAt: "2020-02-13T07:05:01.140Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Usestate"
+tags: []
+content: '''
+  ## Usestate
+  
+  ```js
+  constructor(props){
+      super(props)
+      this.state = {
+          nama: 'Nama',
+          kelas: '12'
+      }
+  
+  }
+  
+  gantiNama = (wik)=>{
+      this.setState({
+          nama: wik,
+          kelas: '13'
+      })
+  }
+  
+  render() {
+      return (
+          <View>
+              <Button
+                  title="Pencet"
+                  onPress= {this.gantiNama}/>
+  
+              <Text>{this.state.nama}</Text>
+              
+              <TextInput
+                  style={{height:50}}
+                  placeholder='Masukan Data'
+                  onChangeText={(nama) => this.gantiNama(nama)}
+                  value = {this.state.nama}
+              />
+          </View>
+      )
+  }
+  ```
+  
+  >**2 Set State**
+  >
+  ```js
+  constructor(props){
+      super(props)
+      this.state = {
+          nama: '',
+          kelas: '12'
+      }
+  }
+  
+  gantiNama = (wik)=>{
+      this.setState({
+          nama: wik
+      })
+  }
+  
+  
+  <Button
+      title="Pencet"
+      onPress={() => {this.gantiNama('param')}}/>
+  
+  <Text style = {myStyle.coba}>{this.state.nama}</Text>
+  
+  <TextInput
+      style={{height:50}}
+      placeholder='Masukan Data'
+      onChangeText={(nama) => this.gantiNama(nama)}
+      value = {this.state.nama}/>
+  ```
+  
+  >**Set State Model Baru**
+  >
+  ```js
+  callApi = () => {
+      this.setState({ isRefresh: true },
+          async () => {
+              try {
+                  const data = await LocalApi.get('/posts')
+                  this.setState({
+                      list: data.data,
+                      isRefresh: false
+                  })
+              } catch (error) {
+                  console.log('Error' + error)
+              }
+          })
+  }
+  ```
+  
+  >**Nambah Data**
+  >
+  ```js
+  this.setState({
+      list: [...this.state.list, response.data]
+  })
+  ```
+  
+  >**Delete Data**
+  >
+  ```js
+  this.setState({
+      list: this.state.list.filter(item => item.id != id)
+  })
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

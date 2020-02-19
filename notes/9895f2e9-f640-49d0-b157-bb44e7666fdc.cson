@@ -1,0 +1,45 @@
+createdAt: "2020-02-10T05:59:26.313Z"
+updatedAt: "2020-02-10T06:00:39.212Z"
+type: "SNIPPET_NOTE"
+folder: "c31af992c900a03da312"
+title: "Input Text"
+tags: []
+description: "Input Text"
+snippets: [
+  {
+    linesHighlighted: []
+    name: "app.js"
+    mode: "JavaScript"
+    content: '''
+      import React, { Component } from 'react'
+      import { Text, View, Button, Alert, Image, ImageBackground, TextInput } from 'react-native'
+      import TestComponent from './TestComponent'
+      
+      export default class TestScreen extends Component {
+          constructor(props){
+              super(props)
+              this.state = {text: ''};
+          }
+      
+          render() {
+              return (
+                  <View style={{flexDirection:'column'}}>
+                      <TextInput
+                          style={{height:40}}
+                          placeholder = "Silahkan Input Isian Berikut"
+                          onChangeText = {(text)=> this.setState({text})}
+                          value = {this.state.text}/>
+                            
+                      <Text style={{fontSize:36}}>
+                          {this.state.text}
+                      </Text>
+                  </View>
+              )
+          }
+      }
+      
+    '''
+  }
+]
+isStarred: false
+isTrashed: false

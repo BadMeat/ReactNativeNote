@@ -1,0 +1,42 @@
+createdAt: "2020-02-10T07:47:13.097Z"
+updatedAt: "2020-02-10T07:59:08.926Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Style"
+tags: []
+content: '''
+  ## Style
+  
+  ```js
+  const style = StyleSheet.create({
+      gedee: {
+          color: 'blue',
+          fontSize: 50
+      }
+  })
+  
+  <Text style={style.gedee}> textInComponent </Text>
+  ```
+  
+  >**Dari File Lain**
+  >
+  ```js
+  import { StyleSheet } from "react-native";
+  
+  export default StyleSheet.create({
+      coba: {
+          fontSize: 20,
+          color : 'red'
+      }
+  })
+  
+  ============================================
+  
+  import myStyle from './Cosmetic/MyStyle'
+  
+  <Text style = {myStyle.coba}>{this.state.nama}</Text>
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

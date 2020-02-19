@@ -1,0 +1,49 @@
+createdAt: "2020-02-17T06:27:19.308Z"
+updatedAt: "2020-02-17T10:02:14.911Z"
+type: "MARKDOWN_NOTE"
+folder: "a5f2ebc888dff0082c06"
+title: "Basic"
+tags: []
+content: '''
+  ## Basic
+  
+  >**Url**
+  >
+  ```
+  https://invertase.io/oss/react-native-firebase/quick-start/existing-project
+  ```
+  
+  ```
+  npm install @react-native-firebase/app
+  ```
+  
+  >**Add the google-services dependency inside of your android/build.gradle file:**
+  >
+  ```
+  buildscript {
+    dependencies {
+      // ...
+      classpath 'com.google.gms:google-services:4.2.0'
+    }
+  }
+  ```
+  >**android/app/build.gradle file:**
+  >
+  ```
+  apply plugin: 'com.google.gms.google-services'
+  ```
+  
+  >**Kalau gk bisa pakai ini**
+  >
+  ```
+  build.gradle
+  ```
+  ```js
+  include ':@react-native-firebase_app'
+  project(':@react-native-firebase_app').projectDir = new File(rootProject.projectDir, '../node_modules/@react-native-firebase/app/android')
+  ```
+  
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

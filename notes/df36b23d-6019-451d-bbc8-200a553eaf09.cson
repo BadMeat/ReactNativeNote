@@ -1,0 +1,42 @@
+createdAt: "2020-02-10T04:55:11.442Z"
+updatedAt: "2020-02-10T04:56:39.066Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Komponen"
+tags: []
+content: '''
+  ## Komponen
+  
+  >***Komponen Baru***
+  >
+  
+  ```js
+  import React, { Component } from 'react'
+  import { Text, View } from 'react-native'
+  
+  export default class TestComponent extends Component {
+      render() {
+          return (
+              <View>
+                  <Text> Ini Komponen Baru {this.props.nama} </Text>
+              </View>
+          )
+      }
+  }
+  ```
+  
+  ```js
+  <TestComponent nama='Tidak diketahui'/>
+  ```
+  
+  >***Props***
+  >
+  ```js
+  <Text> Ini Komponen Baru {this.props.nama} </Text>
+  
+  <TestComponent nama='Tidak diketahui'/>
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

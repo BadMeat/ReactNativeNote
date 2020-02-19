@@ -1,0 +1,20 @@
+createdAt: "2020-02-11T02:17:27.953Z"
+updatedAt: "2020-02-19T09:16:57.414Z"
+type: "MARKDOWN_NOTE"
+folder: "af97a780e87b979debce"
+title: "React Native Element"
+tags: []
+content: '''
+  ## React Native Element
+  
+  - npm install react-native-elements
+  - npm i --save react-native-vector-icons
+  
+  **Edit android/app/build.gradle**
+  - apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+  
+  [Getting Started · React Native Elements](https://react-native-elements.github.io/react-native-elements/docs/getting_started.html)
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

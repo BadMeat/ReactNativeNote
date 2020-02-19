@@ -1,0 +1,20 @@
+createdAt: "2020-02-19T09:17:02.372Z"
+updatedAt: "2020-02-19T09:17:51.623Z"
+type: "MARKDOWN_NOTE"
+folder: "af97a780e87b979debce"
+title: "NativeBase"
+tags: []
+content: '''
+  ## NativeBase
+  
+  >**Install**
+  >
+  ```
+  npm install native-base --save
+  ```
+  
+  [Components · NativeBase](https://docs.nativebase.io/Components.html#Components)
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

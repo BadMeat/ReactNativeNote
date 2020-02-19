@@ -1,0 +1,73 @@
+createdAt: "2020-02-10T08:32:52.864Z"
+updatedAt: "2020-02-10T08:33:29.452Z"
+type: "MARKDOWN_NOTE"
+folder: "67fb8d4c05bf1c0bf02d"
+title: "Contoh Kalkulator"
+tags: []
+content: '''
+  ## Contoh Kalkulator
+  
+  ```js
+  import React, { Component } from 'react'
+  import { Text, View, TextInput, Button } from 'react-native'
+  
+  export default class Kalkulator extends Component {
+  
+      constructor(props){
+          super(props)
+          this.state = {
+              panjang: 0,
+              lebar: 0,
+              hasil: 0
+          }
+      }
+  
+      setPanjang = (panjang) => {
+          this.setState({
+              panjang : panjang
+          })
+      }
+  
+      setLebar = (lebar) => {
+          this.setState({
+              lebar : lebar
+          })
+      }
+  
+      hitung = () => {
+          const w = this.state.panjang * this.state.lebar
+          this.setState({
+              hasil : w
+          })
+      }
+  
+      render() {
+          return (
+              <View>
+                  <TextInput 
+                      placeholder="Isi Panjang"
+                      onChangeText = {(panjang) => this.setPanjang(panjang)}
+                      value = {this.state.panjang}
+                      keyboardType = "numeric"
+                  />
+                  <TextInput 
+                      placeholder="Isi Lebar"
+                      onChangeText = {(lebar) => this.setLebar(lebar)}
+                      value = {this.state.lebar}
+                      keyboardType = "numeric"
+                  />
+                  <Button
+                      title = "Hitung"
+                      onPress = {this.hitung}
+                  />
+                  <Text>{this.state.hasil}</Text>
+              </View>
+          )
+      }
+  }
+  
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

@@ -1,0 +1,45 @@
+createdAt: "2020-02-11T09:36:02.130Z"
+updatedAt: "2020-02-11T09:42:08.916Z"
+type: "MARKDOWN_NOTE"
+folder: "a6283ddd7279d41d9ecf"
+title: "Local Storage"
+tags: []
+content: '''
+  ## Local Storage
+  
+  - npm install add @react-native-community/async-storage
+  - react-native unlink @react-native-community/async-storage
+  [GitHub - react-native-community/async-storage: An asynchronous, persistent, key-value storage system for React Native.](https://github.com/react-native-community/async-storage)
+  ```js
+  import AsyncStorage from '@react-native-community/async-storage';
+  
+  storeData = async () => {
+      try {
+          await AsyncStorage.setItem('nama', 'bencoleng')
+      } catch (error) {
+          this.setError(error)
+      }
+  }
+  
+  getData = async () => {
+      try {
+          const value = await AsyncStorage.getItem('nama')
+          this.setNamaLocal(value)
+      } catch (error) {
+          console.log(error)
+      }
+  }
+  
+  removeData = async () => {
+      try {
+          await AsyncStorage.removeItem('nama')
+      } catch (error) {
+          console.log(error)
+      }
+  }
+  
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

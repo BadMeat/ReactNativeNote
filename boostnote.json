@@ -1,4 +1,45 @@
 {
-  "folders": [],
+  "folders": [
+    {
+      "key": "c31af992c900a03da312",
+      "color": "#E10051",
+      "name": "Basic"
+    },
+    {
+      "key": "67fb8d4c05bf1c0bf02d",
+      "color": "#3FD941",
+      "name": "Contoh"
+    },
+    {
+      "key": "af97a780e87b979debce",
+      "color": "#E10051",
+      "name": "Theme"
+    },
+    {
+      "key": "8b77374a268e72541d40",
+      "color": "#FF8E00",
+      "name": "Api"
+    },
+    {
+      "key": "a6283ddd7279d41d9ecf",
+      "color": "#FF8E00",
+      "name": "LocalStorage"
+    },
+    {
+      "key": "a5f2ebc888dff0082c06",
+      "color": "#FF8E00",
+      "name": "Firebase"
+    },
+    {
+      "key": "eccad2851384cb246c65",
+      "color": "#E10051",
+      "name": "Redux"
+    },
+    {
+      "key": "833e07e82e50085a8e8d",
+      "color": "#E8D252",
+      "name": "Nox"
+    }
+  ],
   "version": "1.0"
 }

@@ -1,0 +1,40 @@
+createdAt: "2020-02-10T03:31:03.014Z"
+updatedAt: "2020-02-17T04:32:57.824Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Hari Pertama"
+tags: []
+content: '''
+  ## Hari Pertama
+  
+  srnc ~template butuh ES7/REACT/REDUX || React Native Tools
+  
+  npx react-native init ProjectName ~ Create Project
+  
+  npx react-native run-android ~ RUN
+  
+  ```...Platform.select({
+    ios: {
+      backgroundColor: 'red',
+    },
+    android: {
+      backgroundColor: 'blue',
+    },
+  }) 
+  ```
+  
+   ./gradlew clean
+   
+   Flat List
+   - refresh
+   - onResch
+   - OnReachedTreshold
+  
+  ```
+  mas putra
+  0877 8037 0079
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

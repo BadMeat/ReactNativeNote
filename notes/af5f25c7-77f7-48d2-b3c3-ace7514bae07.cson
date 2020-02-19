@@ -1,0 +1,50 @@
+createdAt: "2020-02-10T04:47:21.781Z"
+updatedAt: "2020-02-11T12:52:06.373Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Image"
+tags: []
+content: '''
+  ## Image
+  
+  >***Untuk Dari URI***
+  >
+  ```js
+  <Image 
+      style={{width:50, height:50}}
+      source={{uri:'https://facebook.github.io/react-native/img/tiny_logo.png'}}/>
+   ```
+   >***Untuk dari local***
+   >
+   ```js
+  <Image 
+      style={{width:100, height:100}}
+      source={require('./img_contoh.png')}/>
+  ```
+  >***Untuk background local***
+  >
+  ```js
+  <ImageBackground
+      style={{width:100, height:100}}
+      source={require('./img_contoh.png')}>
+      <Text>Haloo Ini Di Dalam Image</Text>
+  ```
+  
+  >**Set Default Image**
+  >
+  ```js
+  {
+      this.state.result.map((l, i) => (
+          <ListItem
+              key={i}
+              leftAvatar={{ source: { uri: l.image_url ? l.image_url : 'https://facebook.github.io/react-native/img/tiny_logo.png' } }}
+              title={l.name}
+              subtitle={l.distance}
+              bottomDivider />
+      ))
+  }
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

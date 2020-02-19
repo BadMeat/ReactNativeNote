@@ -1,0 +1,18 @@
+createdAt: "2020-02-17T04:34:32.939Z"
+updatedAt: "2020-02-17T04:37:57.011Z"
+type: "MARKDOWN_NOTE"
+folder: "833e07e82e50085a8e8d"
+title: "Cara Connect emulator ke pc"
+tags: []
+content: '''
+  ## Cara Connect emulator ke pc
+  
+  ```
+  - Buat Nox Menjadi Root Dulu
+  - Jadikan Debug Mode, Developer Noxnya
+  - adb connect 127.0.0.1:62025
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

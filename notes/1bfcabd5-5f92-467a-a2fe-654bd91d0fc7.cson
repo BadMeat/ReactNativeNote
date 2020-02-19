@@ -1,0 +1,18 @@
+createdAt: "2020-02-11T13:45:30.069Z"
+updatedAt: "2020-02-11T13:45:53.636Z"
+type: "MARKDOWN_NOTE"
+folder: "8b77374a268e72541d40"
+title: "Finger Print"
+tags: []
+content: '''
+  ## Finger Print
+  
+  >**Dapatkan SHA1**
+  >
+  ```
+  keytool -list -v -keystore ./android/App/debug.keystore -alias androiddebugkey -storepass android -keypass android
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

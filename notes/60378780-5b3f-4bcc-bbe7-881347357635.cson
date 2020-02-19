@@ -1,0 +1,96 @@
+createdAt: "2020-02-12T09:27:28.385Z"
+updatedAt: "2020-02-19T04:31:57.715Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "GeoLocation"
+tags: []
+content: '''
+  ## GeoLocation
+  
+  >**Install**
+  >
+  [GitHub - react-native-community/react-native-maps: React Native Mapview component for iOS + Android](https://github.com/react-native-community/react-native-maps)
+  [GitHub - Agontuk/react-native-geolocation-service: React native geolocation service for iOS and android](https://github.com/Agontuk/react-native-geolocation-service)
+  
+  >**Permission Android**
+  >
+  ```
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+  ```
+  ```js
+  requestGeoPermission = async () => {
+     try {
+         const granted = await PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
+  
+          if (granted) {
+              Geolocation.getCurrentPosition(position => {
+                  const initialPosition = JSON.stringify(position)
+                  const lat = JSON.stringify(position.coords.latitude)
+                  const long = JSON.stringify(position.coords.longitude)
+                  console.log(lat)
+                  console.log(long)
+                  this.setState({
+                      initialPosition: initialPosition,
+                      lat: lat,
+                      long: long
+                  })
+              },
+                  error => Alert.alert('Error', JSON.stringify(error)),
+                  { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
+              )
+              console.log('You can use the Geo');
+          } else {
+              console.log('Geo permission denied');
+          }
+      } catch (err) {
+          console.warn(err);
+      }
+  }
+  ```
+  
+  >**Show Maps**
+  >
+  ```js
+  render() {
+      const {lat, long} = this.props.route.params
+      return (
+          <View>
+              <MapView
+                  style={styles.map}
+                  region={{
+                      latitude: lat,
+                      longitude: long,
+                      latitudeDelta: 0.015,
+                      longitudeDelta: 0.0121,
+                  }}>
+                  <Marker coordinate={{
+                      latitude: lat,
+                      longitude: long
+                  }}
+                      title="Rumah">
+                  </Marker>
+              </MapView>
+          </View>
+      )
+  }
+  ```
+  
+  >**Build Gradle Project Level**
+  >
+  ```js
+  buildscript {
+      ext {
+          buildToolsVersion = "28.0.3"
+          minSdkVersion = 16
+          compileSdkVersion = 28
+          targetSdkVersion = 28
+          supportLibVersion = "27.1.0"
+          playServicesVersion = "17.0.0" // or set latest version
+          androidMapsUtilsVersion = "0.5+"
+      }
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

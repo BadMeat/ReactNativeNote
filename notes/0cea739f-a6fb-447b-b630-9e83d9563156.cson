@@ -1,0 +1,50 @@
+createdAt: "2020-02-10T04:58:35.103Z"
+updatedAt: "2020-02-10T07:03:58.241Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Button"
+tags: []
+content: '''
+  ## Button
+  
+  >**Untuk Tombol dan fungsi langsung**
+  ```js
+  <Button 
+      title='Tombol'
+      style={{backgroundColor:'blue'}} 
+      onPress={()=> Alert.alert('Haloo Kepencet')}>
+      Pencet
+  </Button>
+  ```
+  
+  >**Untuk Fungsinya dipisah**
+  >
+  ```js
+  _coba(){
+      Alert.alert("PENCET TR SAJA YAAA")
+  };
+      
+  <Button 
+    title="Pencet"
+    onPress={this._coba}/>
+  ```
+  
+  >**ATAU**
+  >
+  ```js
+  gantiNama = ()=>{
+      this.setState({
+          nama: 'ABC',
+          kelas: '13'
+      })
+  }
+  
+  <Button
+      title="Pencet"
+      onPress= {this.gantiNama}/>
+      <Text>{this.state.nama}</Text>
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
