@@ -1,0 +1,67 @@
+createdAt: "2020-02-24T09:14:09.214Z"
+updatedAt: "2020-02-24T09:18:30.348Z"
+type: "MARKDOWN_NOTE"
+folder: "eccad2851384cb246c65"
+title: "Action"
+tags: []
+content: '''
+  ## Action
+  
+  >**index.js - folder action**
+  >
+  
+  ```js
+  export const selectLibrary = (id) => {
+      console.log("Aku kepilihh iyaaa "+id)
+      return {
+          type: 'select_library',
+          payload: id
+      }
+  }
+  ```
+  
+  >**SelectedReducer - folder reducers**
+  >
+  ```js
+  export default (state = null, action) => {
+      switch (action.type) {
+          case 'select_library':
+              console.log(action.payload)
+              return action.payload
+          default:
+              console.log("lho kok masuk sini")
+              return state
+      }
+  }
+  ```
+  
+  >**index - folder reducers**
+  ```js
+  import { combineReducers } from 'redux'
+  import LibraryReducer from './LibraryReducer'
+  import SelectedReducer from './SelectedReducer'
+  
+  export default combineReducers({
+      libraries: LibraryReducer,
+      selected: SelectedReducer
+  })
+  ```
+  
+  >**ListItems**
+  >
+  ```js
+  import * as actions from '../action'
+  .....
+  <TouchableWithoutFeedback onPress={() => this.props.selectLibrary(id)}>
+  .....
+  const mapStateToProps = (state, ownProps) => {
+      const expanded = ownProps.library.item.id === state.selected
+      return { isExpended: expanded }
+  }
+  .....
+  export default connect(mapStateToProps, actions)(ListItems)
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

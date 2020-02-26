@@ -1,0 +1,120 @@
+createdAt: "2020-02-26T04:37:25.505Z"
+updatedAt: "2020-02-26T04:49:13.509Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Search"
+tags: []
+content: '''
+  ## Search
+  
+  >**Statenya**
+  ```js
+  constructor(props) {
+      super(props)
+      this.state = {
+          isLoading: false,
+          data: [],
+          error: null
+      }
+      this.arrayHolder = []
+  }
+  ```
+  >**Fetch API**
+  ```js
+  getDataFromApi = () => {
+      this.setState({ isLoading: true },
+          async () => {
+              try {
+                  const data = await NameService.get('/api/?', {
+                      params: {
+                          results: 20
+                      }
+                  })
+                  this.setState({
+                      data: data.data.results
+                  })
+                  this.arrayHolder = data.data.results
+                  console.log(data.data.results)
+              } catch (error) {
+                  console.log(error)
+              }
+          })
+  }
+  ```
+  >**Search Filter**
+  ```js
+  searchFilter = (text) => {
+      const newData = this.arrayHolder.filter(item => {
+          const itemData = `${item.name.title.toUpperCase()}   
+          ${item.name.first.toUpperCase()} ${item.name.last.toUpperCase()}`
+  
+          const textData = text.toUpperCase()
+  
+          return itemData.indexOf(textData) > -1
+      })
+  
+      this.setState({ data: newData })
+  }
+  ```
+  >**Render UI**
+  ```js
+  renderHeader = () => {
+      return <SearchBar searchFilter={this.searchFilter} />
+  }
+  
+  renderItem = ({ item }) => (
+      <ListItem
+          title={`${item.name.first} ${item.name.last}`}
+          subtitle={item.email}
+          leftAvatar={{ source: { uri: item.picture.thumbnail } }}
+          bottomDivider
+          chevron
+      />
+  )
+  
+  render() {
+      return (
+          <View>
+              <FlatList
+                  data={this.state.data}
+                  renderItem={this.renderItem}
+                  keyExtractor={item => item.email}
+                  ListHeaderComponent={this.renderHeader}
+              />
+          </View>
+      )
+  }
+  ```
+  
+  >**SearchBar**
+  >
+  ```js
+  const style = StyleSheet.create({
+      search: {
+          marginHorizontal: 15,
+          backgroundColor: '#F0EEEE',
+          height: 50,
+          borderRadius: 5,
+          flexDirection: 'row'
+      }
+  })
+  
+  
+  export default class SearchBar extends Component {
+      render() {
+          return (
+              <View>
+                  <Text> Pilih Propinsi </Text>
+                  <TextInput style={style.search}
+                      placeholder="Ketik Nama Provinsi"
+                      onChangeText={text => this.props.searchFilter(text)}
+                  />
+              </View>
+          )
+      }
+  }
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

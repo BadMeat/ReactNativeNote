@@ -1,0 +1,75 @@
+createdAt: "2020-02-20T04:06:42.671Z"
+updatedAt: "2020-02-21T07:24:49.189Z"
+type: "MARKDOWN_NOTE"
+folder: "eccad2851384cb246c65"
+title: "Preview"
+tags: []
+content: '''
+  ## Preview
+  
+  ![13227782.png](:storage\\cfc750ed-bafb-453e-a9f1-ed8cdfe344d4\\13227782.png)
+  
+  >**Reducer**
+  >
+  ```js
+  fungsi balikin data
+  ```
+  
+  >**Action**
+  >
+  ```js
+  Objek ngasih tau ke reducer gimana ngubah datanya
+  ```
+  
+  >**State**
+  >
+  ```js
+  Data yang dipake diaplikasi
+  ```
+  
+  >**Store**
+  >
+  ```js
+  Tempat penyimpanan Data
+  ```
+  
+  ```
+  type
+  payload
+  store.dispatch
+  ```
+  
+  ```js
+  const reducer = (state = [], action) => { 
+  // State adalah balikan data setiap action (action[0],action[1]... dll)  
+    if(action.type === 'splitin_dong'){
+      return action.state.payload.split('')
+    } else if(action.type === 'tambah_char'){
+      return [...state, action.payload]
+    }
+    return state
+  }
+  
+  const store = Redux.createStore(reducer)
+  
+  const action = {
+    type: 'splitin_dong',
+    payload: 'asfd'
+  }
+  
+  store.dispatch(action)
+  
+  store.getState() // OUTPUT => ["a","s","d","f"]
+  
+  const action = {
+    type: 'tambah_char',
+    payload: 'a'
+  }
+  
+  store.dispatch(action) // Setiap Dispatch bakalan dipanggil lagi si reducernya
+  store.getState() // Output => ["a","s","d","f","a"]
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

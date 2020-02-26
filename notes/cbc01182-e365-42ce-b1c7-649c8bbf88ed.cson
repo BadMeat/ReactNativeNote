@@ -1,0 +1,71 @@
+createdAt: "2020-02-21T10:00:00.235Z"
+updatedAt: "2020-02-21T10:05:15.448Z"
+type: "MARKDOWN_NOTE"
+folder: "eccad2851384cb246c65"
+title: "Second Attemp"
+tags: []
+content: '''
+  ## Second Attemp
+  
+  >**Tampilkan Ditable**
+  ```js
+  keyExtractor = (item, index) => index.toString()
+  
+  render() {
+      return (
+          <List
+              keyExtractor={this.keyExtractor}
+              dataArray={this.props.dataToShow}
+              renderRow={
+                  item => (
+                      <ListItem itemDivider>
+                          <Text>{item.title}</Text>
+                      </ListItem>)
+              }>
+          </List>
+      )
+  }
+  ```
+  >**Tambahkan Store Action**
+  >
+  ```js
+  export default (state = null, action) => {
+      switch (action.type) {
+          case 'select_library':
+              console.log(action.payload)
+              return action.payload
+          default:
+              console.log("lho kok masuk sini")
+              return state
+  
+      }
+  }
+  ```
+  >**Tambahkan Action**
+  >
+  
+  ```js
+  export const selectLibrary = (id) => {
+      return {
+          type: 'select_library',
+          payload: id
+      }
+  }
+  ```
+  >**Panggil Actionnya**
+  >
+  ```js
+  <ListItem itemDivider
+      onPress={() => this.props.selectLibrary(item.id)}
+  >
+      <Text>{item.title}</Text>
+  </ListItem>)
+  ```
+  >**Jangan Lupa actionnya di passing yee**
+  ```js
+  export default connect(mapStateToProps, actions)(LibraryList)
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

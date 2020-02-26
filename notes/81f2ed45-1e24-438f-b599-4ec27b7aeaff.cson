@@ -1,5 +1,5 @@
 createdAt: "2020-02-11T02:11:54.461Z"
-updatedAt: "2020-02-17T05:01:02.527Z"
+updatedAt: "2020-02-21T04:31:56.200Z"
 type: "MARKDOWN_NOTE"
 folder: "c31af992c900a03da312"
 title: "Navigation"
@@ -243,6 +243,13 @@ content: '''
           fontWeight: 'bold',
       },
   })
+  ```
+  
+  >**Jika Error Navigation, di navigation-screen terumata**
+  >
+  ```xml
+  implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
+  implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'
   ```
 '''
 linesHighlighted: []

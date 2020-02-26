@@ -1,15 +1,21 @@
 createdAt: "2020-02-14T09:20:55.812Z"
-updatedAt: "2020-02-14T09:21:18.127Z"
+updatedAt: "2020-02-21T06:46:04.613Z"
 type: "MARKDOWN_NOTE"
 folder: "eccad2851384cb246c65"
 title: "install"
 tags: []
 content: '''
-  install
+  ## install
+  
+  >**npm**
+  >
   
   ```
   react redux & redux
+  npm install --save redux react-redux
   ```
+  
+  ![ef495f44.png](:storage\\016e03e3-2b63-4853-b75d-3adddcf77a43\\ef495f44.png)
 '''
 linesHighlighted: []
 isStarred: false

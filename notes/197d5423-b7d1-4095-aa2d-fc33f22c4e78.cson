@@ -1,0 +1,69 @@
+createdAt: "2020-02-21T07:18:35.809Z"
+updatedAt: "2020-02-21T09:59:26.978Z"
+type: "MARKDOWN_NOTE"
+folder: "eccad2851384cb246c65"
+title: "First Attemp"
+tags: []
+content: '''
+  ## First Attemp
+  
+  >**File**
+  >
+  [First Attemp](:note:652a5944-adc5-4380-8798-74115118cfb2)
+  
+  >**MainClass**
+  >
+  ```js
+  import { createStore } from 'redux'
+  import reducers from './reducers'
+  import LibraryList from './component/LibraryList'
+  >
+  
+  <Provider store={createStore(reducers)}>
+  .....
+  </Provider>
+  ```
+  >**Index**
+  ```js
+  import { combineReducers } from 'redux'
+  import LibraryReducer from './LibraryReducer'
+  
+  export default combineReducers({
+      libraries: LibraryReducer
+  })
+  ```
+  >**LibraryReducer**
+  ```js
+  import data from './LibraryList.json'
+  
+  export default () => data
+  ```
+  
+  ```js
+  json data
+  ```
+  [JSON Response](:note:ec899801-1c5b-4ee9-821c-26d28d9c5fb1)
+  >**Component**
+  >
+  
+  ```js
+  import React, { Component } from 'react'
+  import { Text, View } from 'react-native'
+  import { connect } from 'react-redux'
+  
+  class LibraryList extends Component {
+  ....
+          console.log("Ini Log Aku", this.props)
+  ....        
+  }
+  
+  const mapStateToProps = (state) => {
+      return { dataToShow: state.libraries }
+  }
+  
+  export default connect(mapStateToProps)(LibraryList)
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
