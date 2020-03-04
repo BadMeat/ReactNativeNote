@@ -1,5 +1,5 @@
 createdAt: "2020-02-11T02:11:54.461Z"
-updatedAt: "2020-02-21T04:31:56.200Z"
+updatedAt: "2020-02-27T09:37:49.909Z"
 type: "MARKDOWN_NOTE"
 folder: "c31af992c900a03da312"
 title: "Navigation"
@@ -250,6 +250,37 @@ content: '''
   ```xml
   implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
   implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'
+  ```
+  
+  >**Navigate Without props**
+  >
+  ```js
+  import * as React from 'react'
+  
+  export const navigationRef = React.createRef()
+  
+  export function navigate(name, params) {
+      navigationRef.current?.navigate(name, params)
+  }
+  ```
+  
+  ```js
+  function App() {
+    return (
+    .....
+        <NavigationContainer ref={navigationRef}>
+        .....
+  }
+  ```
+  
+  ```js
+  import * as RootNavigation from '../RootNavigation'
+  
+  export const signinEmail = ({ email, password }) => {
+  .....
+  RootNavigation.navigate('Home')
+  .....
+  }
   ```
 '''
 linesHighlighted: []

@@ -1,0 +1,56 @@
+createdAt: "2020-02-28T07:54:28.435Z"
+updatedAt: "2020-02-28T07:56:16.260Z"
+type: "MARKDOWN_NOTE"
+folder: "eccad2851384cb246c65"
+title: "Action With Multiple Prop"
+tags: []
+content: '''
+  ## Action With Multiple Prop
+  
+  >**AddFormAction**
+  >
+  ```js
+  export const addNewUser = ({ prop, value }) => {
+      return {
+          type: FORM_ADD,
+          payload: { prop, value }
+      }
+  }
+  ```
+  >**index**
+  >
+  ```js
+  export * from './AddFormAction'
+  ```
+  
+  >**Reducers**
+  >
+  ```js
+  const INITIAL_STATE = {
+      name: '',
+      phone: '',
+      age: ''
+  }
+  
+  export default (state = INITIAL_STATE, action) => {
+      switch (action.type) {
+          case FORM_ADD:
+              return { ...state, [action.payload.prop]: action.payload.value }
+          default:
+              return state
+      }
+  }
+  ```
+  
+  >**index**
+  >
+  ```js
+  export default combineReducers({
+      auth: AuthReducers,
+      addForm: AddFormReducer
+  })
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

@@ -1,0 +1,92 @@
+createdAt: "2020-02-27T07:13:46.959Z"
+updatedAt: "2020-02-27T07:19:59.233Z"
+type: "MARKDOWN_NOTE"
+folder: "eccad2851384cb246c65"
+title: "Login"
+tags: []
+content: '''
+  ## Login
+  
+  >**Source**
+  >
+  [Login](:note:44a1b730-0f53-45b5-aa2c-68a5c1bf733e)
+  
+  >**index**
+  >
+  
+  ```js
+  export const signinEmail = ({ email, password }) => {
+      return (dispatch) => {
+          dispatch({ type: IS_LOADING })
+          auth().signInWithEmailAndPassword(email, password)
+              .then(user => {
+                  dispatch({ type: LOGIN_SUCCED, payload: user })
+              })
+              .catch(() => {
+                  dispatch({ type: LOGIN_FAILED })
+              })
+      }
+  }
+  ```
+  >**authReducers**
+  >
+  ```js
+  const INTIAL_STATE = {
+      email: '',
+      password: '',
+      user: null,
+      error: '',
+      isLoading: false
+  }
+  
+  export default (state = INTIAL_STATE, action) => {
+      console.log(action)
+      switch (action.type) {
+          case IS_LOADING:
+              return { ...state, isLoading: true }
+          case LOGIN_SUCCED:
+              return { ...state, user: action.payload, isLoading: false }
+          case LOGIN_FAILED:
+              return { ...state, error: 'Auth Failed', password: '', email: '', isLoading: false }
+          default:
+              return state
+      }
+  }
+  ```
+  
+  >**index**
+  >
+  ```js
+  import { combineReducers } from "redux";
+  import AuthReducers from "./AuthReducers";
+  
+  export default combineReducers({
+      auth: AuthReducers
+  })
+  ```
+  
+  >**Home**
+  >
+  ```js
+  import React, { Component } from 'react'
+  import { Provider } from 'react-redux'
+  import FormLogin from './FormLogin'
+  import { createStore, applyMiddleware } from 'redux'
+  import reducers from '../reducers'
+  import ReduxThunk from 'redux-thunk'
+  
+  export default class Home extends Component {
+      render() {
+          return (
+              <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
+                  <FormLogin />
+              </Provider>
+          )
+      }
+  }
+  
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
