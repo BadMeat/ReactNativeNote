@@ -1,0 +1,111 @@
+createdAt: "2020-03-12T06:43:12.813Z"
+updatedAt: "2020-03-12T06:44:10.034Z"
+type: "MARKDOWN_NOTE"
+folder: "8b77374a268e72541d40"
+title: "Create own GUI wih webview"
+tags: []
+content: '''
+  ## Create own GUI wih webview
+  
+  ```js
+  import React, { Component } from 'react'
+  import { Text, View, Button, TouchableOpacity, Image, ScrollView, FlatList } from 'react-native'
+  import cheerio from 'cheerio-without-node-native';
+  import ListItems from './ListItems';
+  
+  export default class App extends Component {
+  
+    constructor(props) {
+      super(props)
+      this.state = {
+        items: [],
+      }
+    }
+  
+    load = async () => {
+      const data = await fetch('https://www.kemenkeu.go.id/publikasi/berita/');
+      const $ = cheerio.load(await data.text());
+      const allTitles = $('.arf_box_news_text .row')
+        .get()
+        .map(repo => {
+          const $repo = $(repo);
+          const title = $repo.find('h4').text()
+          const image = $repo.find('img').attr('src')
+          const tayang = $repo.find('p.font-orange').text()
+          const data = {
+            title: title,
+            img: `https://www.kemenkeu.go.id/${image}`,
+            tayang: tayang
+          }
+          return data;
+        });
+      allTitles.shift()
+      this.setState({
+        items: allTitles
+      })
+      console.log(this.state.items);
+    }
+  
+    renderItem(data) {
+      return (
+        <ListItems data={data} />)
+    }
+  
+    render() {
+      return (
+        <View style={{ flex: 1 }}>
+          <View style={{ flex: 1, justifyContent: 'center' }}>
+            <Button
+              title="pencet"
+              onPress={() => this.load()}
+            />
+          </View>
+          <View style={{ flex: 1, margin: 5 }}>
+            <FlatList
+              data={this.state.items}
+              renderItem={this.renderItem}
+              keyExtractor={(value, index) => String(index)}
+            />
+          </View>
+  
+        </View>
+      )
+    }
+  }
+  
+  ```
+  
+  ```js
+  import React, { Component } from 'react'
+  import { Text, View, Image } from 'react-native'
+  
+  export default class ListItems extends Component {
+      render() {
+          const { title, img, tayang } = this.props.data.item
+          return (
+              <View style={{ flex: 1, flexDirection: 'row', margin: 20 }}>
+                  <View style={{ flex: 1 }}>
+                      <Image
+                          style={{ width: 70, height: 70 }}
+                          source={{ uri: img }}/>
+  
+                  </View>
+  
+                  <View style={{ flex: 4, marginStart: 10 }}>
+                      <Text style={{ flex: 1, fontSize: 15 }}>
+                          {title}
+                      </Text>
+                      <Text>
+                          {tayang}
+                      </Text>
+                  </View>
+              </View >
+          )
+      }
+  }
+  
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

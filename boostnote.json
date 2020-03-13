@@ -39,6 +39,11 @@
       "key": "833e07e82e50085a8e8d",
       "color": "#E8D252",
       "name": "Nox"
+    },
+    {
+      "key": "c4686cbedf78bed63642",
+      "color": "#E10051",
+      "name": "Navigation"
     }
   ],
   "version": "1.0"

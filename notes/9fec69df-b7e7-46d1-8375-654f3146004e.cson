@@ -1,0 +1,85 @@
+createdAt: "2020-03-12T06:48:17.519Z"
+updatedAt: "2020-03-12T06:48:24.443Z"
+type: "MARKDOWN_NOTE"
+folder: "8b77374a268e72541d40"
+title: "WebView"
+tags: []
+content: '''
+  ## WebView
+  
+  ```js
+  import React, { Component } from 'react'
+  import { Text, View, ActivityIndicator, Image, TouchableHighlight, Dimensions } from 'react-native'
+  import WebView from 'react-native-webview'
+  import { Actions } from 'react-native-router-flux'
+  
+  export default class NewsScreen extends Component {
+  
+      constructor(props) {
+          super(props)
+          this.state = {
+              visible: true,
+              key: 1,
+              isWebChange: false
+          }
+      }
+  
+      hideLoading() {
+          this.setState({
+              visible: false
+          })
+      }
+  
+      resetWeb = () => {
+          if (this.state.isWebChange) {
+              this.setState({
+                  key: this.state.key + 1,
+                  visible: true
+              })
+          }
+      }
+  
+      setWebView = (webViewState) => {
+          if (webViewState.url != 'https://www.kemenkeu.go.id/publikasi/berita/') {
+              this.setState({
+                  isWebChange: true
+              })
+          }
+      }
+  
+      render() {
+          return (
+              <View style={
+                  {
+                      flex: 1
+                  }}>
+                  <WebView
+                      scrollEnabled={true}
+                      key={this.state.key}
+                      onLoad={() => this.hideLoading()}
+                      onMessage={(event) => console.log("Dataa")}
+                      source={{ uri: 'https://www.kemenkeu.go.id/publikasi/berita/' }}
+                      onNavigationStateChange={this.setWebView}
+                  />
+                  {
+                      this.state.visible && (
+                          <ActivityIndicator size="large" style={{ position: 'absolute', left: 0, bottom: 0, right: 0, top: 0 }} />
+                      )
+                  }
+                  <View style={{ position: 'absolute', left: 0, top: 0, flex: 1 }}>
+                      <TouchableHighlight onPress={() => this.resetWeb()}>
+                          <Image source={require('../assets/ic_add.png')}
+                              style={{ width: 50, height: 50 }}
+                          />
+                      </TouchableHighlight>
+                  </View>
+              </View>
+          )
+      }
+  }
+  
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

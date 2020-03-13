@@ -1,0 +1,80 @@
+createdAt: "2020-03-12T02:28:33.205Z"
+updatedAt: "2020-03-12T02:29:47.577Z"
+type: "MARKDOWN_NOTE"
+folder: "c4686cbedf78bed63642"
+title: "Bottom Navigation + Drawer"
+tags: []
+content: '''
+  ## Bottom Navigation + Drawer
+  
+  ```js
+  <Router>
+      <Scene hideNavBar>
+          <Scene key="Search">
+              <Scene
+                  navigationBarStyle={{ backgroundColor: 'rgb(0, 98, 128)' }}
+                  renderBackButton={() =>
+                      <TouchableOpacity onPress={() => Actions.Home()}>
+                          <Image
+                              style={{ width: 30, height: 30, marginStart: 20 }}
+                              source={require('./assets/images/ic_close.png')}
+                          />
+                      </TouchableOpacity>
+                  }
+                  renderTitle={() => AppLogo('Search')}
+                  component={SearchScreen}
+                  icon={Apbn}
+                  title="Search" />
+          </Scene>
+          <Drawer
+              key="drawerMenu"
+              drawerWidth={250}
+              initial={true}
+              drawerImage={require('./assets/images/ic_options.png')}
+              contentComponent={NavDrawer}
+              drawerPosition="right">
+              <Scene
+                  renderTitle={() => AppLogo()}
+                  tabs={true}
+                  tabBarStyle={styles.tabBar}
+                  navigationBarStyle={{ backgroundColor: 'rgb(0, 98, 128)' }}>
+                  <Scene key="Home"
+                      component={HomeScreen}
+                      onExit = {() => Actions.refresh()}
+                      icon={SettingsTab}
+                      type="replace"
+                      hideNavBar
+                  />
+                  <Scene key="News"
+                      component={NewsScreen}
+                      icon={Berita}
+                      type="reset"
+                      onEnter={() => {
+                          Actions.refresh({ key: 'News' })
+                      }}
+                      title="Berita" />
+                  <Scene key="Budget"
+                      component={BudgetScreen}
+                      icon={Anggaran}
+                      onEnter={() => Actions.refresh()}
+                      title="Anggaran"
+                  />
+                  <Scene key="InfoAPBN"
+                      component={ApbnScreen}
+                      icon={Apbn}
+                      onEnter={() => Actions.refresh()}
+                      title="Info APBN" />
+                  <Scene key="Lainnya"
+                      component={BudgetScreen}
+                      icon={Lainnya}
+                      tabBarOnPress={() => Actions.drawerOpen()}
+                      title="Lainnya" />
+              </Scene>
+          </Drawer>
+      </Scene>
+  </Router>
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
