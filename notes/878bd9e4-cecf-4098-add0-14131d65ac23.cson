@@ -1,0 +1,34 @@
+createdAt: "2020-04-03T01:51:35.247Z"
+updatedAt: "2020-04-03T01:54:23.730Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Multidex"
+tags: []
+content: '''
+  ## Multidex 
+  >***android/app/build.gradle***
+  ```gradle
+  
+  defaultConfig {
+      .....
+      multiDexEnabled true
+  }
+  
+  dependencies {
+      .....
+      def multidex_version = "2.0.1"
+      implementation 'androidx.multidex:multidex:$multidex_version'
+  }
+  ```
+  
+  >**Main Application**
+  >
+  ```java
+  import androidx.multidex.MultiDexApplication;
+  
+  public class MainApplication extends MultiDexApplication implements ReactApplication {
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

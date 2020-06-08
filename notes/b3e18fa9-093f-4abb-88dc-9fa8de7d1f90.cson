@@ -1,0 +1,73 @@
+createdAt: "2020-05-27T01:05:03.743Z"
+updatedAt: "2020-05-27T01:08:53.202Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Date"
+tags: []
+content: '''
+  ## Date
+  
+  ```
+  npm install @react-native-community/datetimepicker --save
+  ```
+  
+  ```js
+  import DateTimePicker from '@react-native-community/datetimepicker';
+  
+      constructor(props) {
+          super(props)
+          this.state = {
+              date: new Date(),
+              show: false,
+              mode: 'date'
+          }
+      }
+      
+      showDatepicker = () => {
+          this.showMode('date')
+          console.log('year date', this.state.date.getFullYear())
+      };
+      
+      showMode = currentMode => {
+          this.setState({ show: !this.state.show, mode: currentMode })
+      };
+      
+      onChange = (event, selectedDate) => {
+          const currentDate = selectedDate || this.state.date
+          this.setState({
+              show: Platform.OS === 'ios',
+              date: currentDate
+          })
+      }  
+      
+      showTimepicker = () => {
+          this.showMode('time')
+      };
+      
+      
+      render() {
+          return (
+              <SafeAreaView style={{ flex: 1 }}>
+                  <Button title="Date" onPress={() => this.showDatepicker()} />
+                  {
+                      this.state.show && (
+                          <DateTimePicker
+                              testID="dateTimePicker"
+                              timeZoneOffsetInMinutes={0}
+                              value={this.state.date}
+                              mode={this.state.mode}
+                              is24Hour={true}
+                              display="default"
+                              onChange={this.onChange}
+                          />
+                      )
+                  }
+              </SafeAreaView>
+          )
+      }
+  
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

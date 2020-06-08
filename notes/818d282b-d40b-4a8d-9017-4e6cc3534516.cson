@@ -1,0 +1,200 @@
+createdAt: "2020-03-30T11:38:17.755Z"
+updatedAt: "2020-03-30T11:39:40.205Z"
+type: "MARKDOWN_NOTE"
+folder: "6c6b706546432d7992e8"
+title: "CHART BAR HORIZONTAL"
+tags: []
+content: '''
+  ## CHART BAR HORIZONTAL
+  
+  ```JS
+  import React, { Component } from 'react'
+  import { View, Button } from 'react-native'
+  import { BarChart, Grid, YAxis } from 'react-native-svg-charts'
+  import * as scale from 'd3-scale'
+  import { Text, G, Rect, Circle } from 'react-native-svg'
+  import Svg from 'react-native-svg'
+  import { Line } from 'react-native-svg'
+  
+  export default class TabTwo extends Component {
+      render() {
+  
+          const data = [50, 10, 40, 95, 85]
+          const dataDepan = [35, 67, 87, 67, 56]
+          const dataDash = [
+              {
+                  nilai: 50,
+                  nilai2: 35,
+                  label: 'Pelayanan Umum',
+                  dash: '-'
+              },
+              {
+                  nilai: 10,
+                  nilai2: 67,
+                  label: 'Ekonomi',
+                  dash: '-'
+              },
+              {
+                  nilai: 40,
+                  nilai2: 87,
+                  label: 'Perlindungan Sosial',
+                  dash: '-'
+              },
+              {
+                  nilai: 95,
+                  nilai2: 67,
+                  label: 'Ketertiban dan Keamanan',
+                  dash: '-'
+              },
+              {
+                  nilai: 85,
+                  nilai2: 56,
+                  label: 'Pendidikan',
+                  dash: '-'
+              }, {
+                  nilai: 85,
+                  nilai2: 56,
+                  label: 'Pendidikan',
+                  dash: '-'
+              },
+          ]
+  
+          // const dataDash = [1,2,3,4,5,6]
+  
+          const data2 = [
+              {
+                  nilai: 50,
+                  nilai2: 35,
+                  label: '2020',
+                  dash: '-'
+              },
+              {
+                  nilai: 10,
+                  nilai2: 67,
+                  label: '2019',
+                  dash: '-'
+              },
+              {
+                  nilai: 40,
+                  nilai2: 87,
+                  label: '2018',
+                  dash: '-'
+              },
+              {
+                  nilai: 95,
+                  nilai2: 67,
+                  label: '2017',
+                  dash: '-'
+              },
+              {
+                  nilai: 85,
+                  nilai2: 56,
+                  label: '2016',
+                  dash: '-'
+              },
+          ]
+  
+          const CUT_OFF = 50
+          const Labels = ({ x, y, bandwidth, data }) => (
+              data.map((value, index) =>
+                  (
+                      <Text
+                          key={index}
+                          x={value > CUT_OFF ? x(value) - 30 : x(value) + 10}
+                          y={y(index) + (bandwidth / 2)}
+                          fontSize={10}
+                          fill={value > CUT_OFF ? 'white' : 'black'}
+                          alignmentBaseline={'middle'}
+                      >
+                          {data2[index].nilai}
+                      </Text>
+                  )
+              )
+          )
+  
+          const LabelsDepan = ({ x, y, bandwidth, data }) => (
+              data.map((value, index) =>
+                  (
+                      <Text
+                          key={index}
+                          x={value > CUT_OFF ? x(value) - 30 : x(value) + 10}
+                          y={y(index) + (bandwidth / 2)}
+                          fontSize={10}
+                          fill={value > CUT_OFF ? 'white' : 'black'}
+                          alignmentBaseline={'middle'}
+                      >
+                          {data2[index].nilai2}
+                      </Text>
+                  )
+              )
+          )
+  
+          return (
+              <View style={{ flexDirection: 'row', height: 235, margin: 20, backgroundColor: '#e3e1e1' }}>
+                  <View style={{ alignItems: 'flex-start', justifyContent: 'flex-start' }}>
+                      <YAxis
+                          data={data2}
+                          style={{ height: 230, justifyContent: 'flex-start', alignItems: 'flex-start' }}
+                          yAccessor={({ index }) => index}
+                          scale={scale.scaleBand}
+                          contentInset={{ top: 10, bottom: 10, right: 0 }}
+                          spacing={0.2}
+                          svg={{ fill: 'rgba(0, 0, 0, 0.8)', alignmentBaseline: 'bottom' }}
+                          formatLabel={(_, index) => ' ' + data2[index].label}
+                      >
+                      </YAxis>
+                  </View>
+                  <YAxis
+                      data={dataDash}
+                      style={{ height: 230, width: 34 }}
+                      yAccessor={({ index }) => index}
+                      scale={scale.scaleTime}
+                      contentInset={{ top: 11, bottom: 10.5}}
+                      spacing={0.1}
+                      svg={{ fill: 'rgba(0, 0, 0, 0.8)' }}
+                      formatLabel={(_, index) => dataDash[index].dash}
+                  >
+                  </YAxis>
+                  <Svg height="220" width="1" left={-15}>
+                      <Line x1="0" y1="10" x2="0" y2="230" stroke="black" strokeWidth="2" />
+                  </Svg>
+                  <View style={{ position: 'absolute', left: 47, right: 10, top: 10, height: 200 }}>
+                      <BarChart
+                          style={{ flex: 1, paddingLeft: 8 }}
+                          data={data}
+                          spacingInner={0.7}
+                          horizontal={true}
+                          svg={{ fill: '#d46511' }}
+                          contentInset={{ top: 10, bottom: 10 }}
+                          spacing={0.2}
+                          gridMin={0}
+                      >
+                          <Labels />
+                      </BarChart>
+                  </View>
+                  <View style={{ position: 'absolute', left: 47, right: 10, top: 22.5, height: 200 }}>
+                      <BarChart
+                          style={{ flex: 1, paddingLeft: 8 }}
+                          data={dataDepan}
+                          spacingInner={0.7}
+                          horizontal={true}
+                          svg={{ fill: '#0713ba' }}
+                          contentInset={{ top: 10, bottom: 10 }}
+                          spacing={0.2}
+                          gridMin={0}
+                      >
+                          <LabelsDepan />
+                      </BarChart>
+                  </View>
+  
+              </View>
+          )
+      }
+  
+  }
+  
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

@@ -1,5 +1,5 @@
 createdAt: "2020-02-14T08:49:28.209Z"
-updatedAt: "2020-02-18T07:39:32.243Z"
+updatedAt: "2020-06-01T17:50:51.673Z"
 type: "MARKDOWN_NOTE"
 folder: "a5f2ebc888dff0082c06"
 title: "RealTimeDatabase"
@@ -69,6 +69,60 @@ content: '''
       const snapshot = await ref.once('value');
       const r = snapshot.val()
       console.log("valukuuu brooo "+JSON.stringify(r))
+  }
+  
+  ```
+  
+  >**Update Data**
+  >
+  ```js
+  export const updateIncome = () => {
+      return async (dispatch, getState) => {
+          const { info, price, date, id } = getState().add
+          dispatch({
+              type: ADD_LOADING
+          })
+  
+          const uid = auth().currentUser.uid
+          const ref = database().ref(`/users/${uid}/transaction/${id}`)
+  
+          ref.update({
+              info: info,
+              price: price,
+              date: date
+          }).then(data => {
+              dispatch({
+                  type: ADD_SUCCESS,
+                  payload: true
+              })
+              console.log("Action updateIncome response  ", data);
+          }).catch(error => {
+              console.log("Action updateIncome Error ", error);
+  
+          })
+      }
+  }
+  ```
+  
+  >**Delete Data**
+  >
+  ```js
+  export const deleteIncome = () => {
+      return async (dispatch, getState) => {
+          const { id } = getState().add
+          dispatch({
+              type: ADD_LOADING
+          })
+  
+          const uid = auth().currentUser.uid
+          const ref = database().ref(`/users/${uid}/transaction/${id}`)
+  
+          await ref.remove()
+          dispatch({
+              type: ADD_SUCCESS,
+              payload: true
+          })
+      }
   }
   
   ```

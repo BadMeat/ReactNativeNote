@@ -1,0 +1,15 @@
+createdAt: "2020-04-15T08:02:45.298Z"
+updatedAt: "2020-04-15T08:02:53.415Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Pod Install"
+tags: []
+content: '''
+  ## Pod Install
+  ```
+  npx pod-install ios
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

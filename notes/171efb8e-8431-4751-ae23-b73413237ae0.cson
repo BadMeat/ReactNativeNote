@@ -1,0 +1,228 @@
+createdAt: "2020-03-26T09:16:06.313Z"
+updatedAt: "2020-03-26T09:16:13.145Z"
+type: "MARKDOWN_NOTE"
+folder: "c4686cbedf78bed63642"
+title: "Back Router"
+tags: []
+content: '''
+  ##Back Router
+  
+  ```js
+  import { Router, Stack, Scene, Drawer, Actions, ActionConst, Modal, Lightbox } from "react-native-router-flux"
+  import React from "react"
+  import HomeScreen from "./component/HomeScreen";
+  import BudgetScreen from "./component/BudgetScreen";
+  import { StyleSheet, View, Image, Text, TouchableOpacity, Button } from "react-native";
+  import SearchScreen from "./component/SearchScreen";
+  import NewsScreen from "./component/NewsScreen";
+  import ApbnScreen from "./component/ApbnScreen";
+  import WebViewScreen from "./component/WebViewScreen";
+  import OtherModal from "./modal/OtherModal";
+  import CommentScreen from "./component/CommentScreen";
+  import AccountScreen from "./component/AccountScreen";
+  
+  const styles = StyleSheet.create({
+      tabBar: {
+          height: 60,
+          opacity: 0.98,
+          justifyContent: 'space-between',
+          marginBottom: 10,
+          color: 'black'
+      },
+      bottomNav: {
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: 10,
+      }
+  });
+  
+  const SettingsTab = (props) => {
+      const settingImageFocused = require('../src/assets/images/ic_beranda.png')
+      const settingImageUnfocused = require('../src/assets/images/ic_beranda.png')
+      let settingImage = props.focused ? settingImageFocused : settingImageUnfocused
+  
+      const settingStyleFocused = { width: 24, height: 24 }
+      const settingStyleUnfocused = { width: 24, height: 24, tintColor: 'rgba(0,0,0,0.3)' }
+      let styleImage = props.focused ? settingStyleFocused : settingStyleUnfocused
+      return (
+          <View style={styles.bottomNav}>
+              <Image source={settingImage} style={styleImage} />
+          </View>
+      );
+  }
+  
+  const Berita = (props) => {
+      const settingImageFocused = require('../src/assets/images/ic_berita.png')
+      const settingImageUnfocused = require('../src/assets/images/ic_berita.png')
+      let settingImage = props.focused ? settingImageFocused : settingImageUnfocused
+  
+      const settingStyleFocused = { width: 24, height: 24 }
+      const settingStyleUnfocused = { width: 24, height: 24, tintColor: 'rgba(0,0,0,0.3)' }
+      let styleImage = props.focused ? settingStyleFocused : settingStyleUnfocused
+      return (
+          <View style={styles.bottomNav}>
+              <Image source={settingImage} style={styleImage} />
+          </View>
+      );
+  }
+  
+  const Apbn = (props) => {
+      const settingImageFocused = require('../src/assets/images/ic_apbn.png')
+      const settingImageUnfocused = require('../src/assets/images/ic_apbn.png')
+      let settingImage = props.focused ? settingImageFocused : settingImageUnfocused
+  
+      const settingStyleFocused = { width: 24, height: 24 }
+      const settingStyleUnfocused = { width: 24, height: 24, tintColor: 'rgba(0,0,0,0.3)' }
+      let styleImage = props.focused ? settingStyleFocused : settingStyleUnfocused
+      return (
+          <View style={styles.bottomNav}>
+              <Image source={settingImage} style={styleImage} />
+          </View>
+      );
+  }
+  
+  
+  const Anggaran = (props) => {
+      const settingImageFocused = require('../src/assets/images/ic_anggaran.png')
+      const settingImageUnfocused = require('../src/assets/images/ic_anggaran.png')
+  
+      const settingStyleFocused = { width: 24, height: 24 }
+      const settingStyleUnfocused = { width: 24, height: 24, tintColor: 'rgba(0,0,0,0.3)' }
+  
+  
+      let settingImage = props.focused ? settingImageFocused : settingImageUnfocused
+      let styleImage = props.focused ? settingStyleFocused : settingStyleUnfocused
+      return (
+          <View style={styles.bottomNav}>
+              <Image
+                  source={settingImage}
+                  style={styleImage} />
+          </View>
+      );
+  }
+  
+  const Lainnya = (props) => {
+      const settingImageFocused = require('../src/assets/images/ic_more.png')
+      const settingImageUnfocused = require('../src/assets/images/ic_more.png')
+      let settingImage = props.focused ? settingImageFocused : settingImageUnfocused
+  
+      const settingStyleFocused = { width: 24, height: 24 }
+      const settingStyleUnfocused = { width: 24, height: 24, tintColor: 'rgba(0,0,0,0.3)' }
+      let styleImage = props.focused ? settingStyleFocused : settingStyleUnfocused
+      return (
+          <View style={styles.bottomNav}>
+              <Image source={settingImage} style={styleImage} />
+          </View>
+      );
+  }
+  
+  const AppLogo = () => {
+      return (
+          <View style={{ flexDirection: 'row', justifyContent: 'center', flex: 1 }}>
+              <Image
+                  style={{ width: 30, height: 30, top: 0, marginTop: -10, marginEnd: 20 }}
+                  source={require('./assets/images/ic_kemenkeu_pure.png')}
+              />
+              <Text style={{ fontFamily: 'Arkitech-Bold', color: 'white' }}>TRANPARANSI</Text>
+              <Text style={{ fontFamily: 'Arkitech-Bold', color: 'rgb(198, 204, 39)' }}> APBN</Text>
+          </View>
+      )
+  }
+  
+  
+  const RouterComponent = () => {
+      return (
+          <Router navigationBarStyle={{ backgroundColor: '#FF5722' }} titleStyle={{ color: '#fff' }}>
+              <Scene hideNavBar modal>
+                  <Scene hideNavBar>
+                      <Scene key="out">
+                          <Scene
+                              key="Search"
+                              navigationBarStyle={{ backgroundColor: '#006699' }}
+                              renderBackButton={() =>
+                                  <TouchableOpacity onPress={() => Actions.Home()}>
+                                      <Image
+                                          style={{ width: 30, height: 30, marginStart: 20 }}
+                                          source={require('./assets/images/ic_close.png')}
+                                      />
+                                  </TouchableOpacity>
+                              }
+                              renderTitle={() => AppLogo('Search')}
+                              component={SearchScreen}
+                              icon={Apbn}
+                              title="Search" />
+                      </Scene>
+  
+                      <Scene
+                          renderTitle={() => AppLogo()}
+                          tabs={true}
+                          legacy={true}
+                          showNavigationBar={false}
+                          swipeEnabled={true}
+                          initial
+                          activeTintColor={'black'}
+                          tabBarStyle={styles.tabBar}
+                          navigationBarStyle={{ backgroundColor: '#006699' }}>
+                          <Scene key="Home"
+                              component={HomeScreen}
+                              onEnter={() => {
+                                  Actions.refresh({ key: Math.random() })
+                              }}
+                              hideBackImage
+                              icon={SettingsTab}
+                              showNavigationBar={false}
+                          />
+                          <Scene key="News"
+                              component={WebViewScreen}
+                              icon={Berita}
+                              onEnter={() => {
+                                  Actions.refresh({ key: Math.random() })
+                              }}
+                              title="Berita" />
+                          <Scene key="Budget"
+                              component={CommentScreen}
+                              icon={Anggaran}
+                              onEnter={() => {
+                                  Actions.refresh({ key: Math.random() })
+                              }}
+                              title="Anggaran"
+                          />
+                          <Scene key="InfoAPBN"
+                              component={ApbnScreen}
+                              icon={Apbn}
+                              onEnter={() => {
+                                  Actions.refresh({ key: Math.random() })
+                              }}
+                              title="Info APBN" />
+                          <Scene key="Lainnya"
+                              component={AccountScreen}
+                              icon={Lainnya}
+                              onEnter={() => {
+                                  Actions.refresh({ key: Math.random() })
+                              }}
+                              // tabBarOnPress={() => {
+                              //     return Actions.Lain()
+                              // }}
+                              title="Lainnya" />
+                      </Scene>
+                      {/* <Scene key="root"
+                          initial
+                      >
+                          
+                      </Scene> */}
+                  </Scene>
+                  <Scene key="Lain"
+                      hideNavBar
+                      component={OtherModal}
+                      title="Lainnya" />
+              </Scene>
+          </Router>
+      )
+  }
+  
+  export default RouterComponent
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

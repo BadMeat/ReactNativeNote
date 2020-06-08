@@ -1,5 +1,5 @@
 createdAt: "2020-03-11T10:42:43.977Z"
-updatedAt: "2020-03-11T10:43:39.226Z"
+updatedAt: "2020-04-29T03:12:24.344Z"
 type: "MARKDOWN_NOTE"
 folder: "c31af992c900a03da312"
 title: "Build apk Debug"
@@ -12,9 +12,7 @@ content: '''
   Make sure you have already directory android/app/src/main/assets/, if not create directory, after that create new file and save as index.android.bundle and put your file in like this android/app/src/main/assets/index.android.bundle
   
   ```
-  react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
-  
-  cd android && ./gradlew assembleDebug
+  cd android;./gradlew clean;cd ..;react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/;cd android; ./gradlew assembleDebug; cd ..
   ```
   
   Then you can get apk in app/build/outputs/apk/debug/app-debug.apk

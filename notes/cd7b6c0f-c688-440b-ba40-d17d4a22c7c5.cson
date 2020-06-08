@@ -1,0 +1,80 @@
+createdAt: "2020-03-23T02:48:42.391Z"
+updatedAt: "2020-03-23T02:48:50.443Z"
+type: "MARKDOWN_NOTE"
+folder: "c4686cbedf78bed63642"
+title: "NavBar"
+tags: []
+content: '''
+  ## NavBar
+  
+  ```js
+  import {
+      View, Image, StatusBar, TouchableWithoutFeedback
+  } from 'react-native';
+  import React, { Component } from 'react';
+  import { Actions, Router, Scene } from 'react-native-router-flux';
+  
+  class NavBar extends Component {
+      render() {
+          return (
+              <View style={styles.backgroundStyle}>
+                  <StatusBar />
+                  <View style={{ flexDirection: 'row' }}>
+                      <TouchableWithoutFeedback onPress={() => Actions.Home()}>
+                          <Image
+                              source={require('../../assets/ic_add.png')}
+                              style={styles.backarrowStyle} />
+                      </TouchableWithoutFeedback>
+  
+                      <Image
+                          source={require('../../assets/ic_add.png')}
+                          style={styles.helpStyle} />
+  
+  
+                      <Image
+                          source={require('../../assets/ic_add.png')}
+                          style={styles.settingStyle} />
+                  </View>
+              </View>
+          );
+      }
+  
+  }
+  const styles = {
+      backgroundStyle: {
+          backgroundColor: 'transparent'
+      },
+      backarrowStyle: {
+          resizeMode: 'contain',
+          flexDirection: 'row',
+          width: 50,
+          height: 50,
+          left: 0,
+          justifyContent: 'flex-start'
+      },
+      helpStyle: {
+          resizeMode: 'contain',
+          width: 50,
+          height: 50,
+          left: 220,
+          justifyContent: 'flex-end',
+          position: 'relative'
+  
+      },
+      settingStyle: {
+          resizeMode: 'contain',
+          width: 50,
+          height: 50,
+          justifyContent: 'flex-end',
+          position: 'relative',
+          left: 210
+      }
+  };
+  
+  
+  export default NavBar;
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

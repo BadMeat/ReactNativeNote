@@ -44,6 +44,16 @@
       "key": "c4686cbedf78bed63642",
       "color": "#E10051",
       "name": "Navigation"
+    },
+    {
+      "key": "6c6b706546432d7992e8",
+      "color": "#2BA5F7",
+      "name": "SVG"
+    },
+    {
+      "key": "d9c102f05f36cc3f294d",
+      "color": "#2BA5F7",
+      "name": "Hash"
     }
   ],
   "version": "1.0"

@@ -1,0 +1,16 @@
+createdAt: "2020-04-17T14:27:18.573Z"
+updatedAt: "2020-04-17T14:29:49.331Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Create React Native in Specifict Version"
+tags: []
+content: '''
+  ## Create React Native in Specifict Version
+  
+  ```js
+  react-native init newproject --version react-native@0.18.1
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

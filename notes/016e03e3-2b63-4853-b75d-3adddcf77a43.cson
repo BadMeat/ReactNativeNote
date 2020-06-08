@@ -1,5 +1,5 @@
 createdAt: "2020-02-14T09:20:55.812Z"
-updatedAt: "2020-02-21T06:46:04.613Z"
+updatedAt: "2020-04-26T20:57:16.185Z"
 type: "MARKDOWN_NOTE"
 folder: "eccad2851384cb246c65"
 title: "install"
@@ -12,7 +12,7 @@ content: '''
   
   ```
   react redux & redux
-  npm install --save redux react-redux
+  npm install --save redux react-redux redux-thunk
   ```
   
   ![ef495f44.png](:storage\\016e03e3-2b63-4853-b75d-3adddcf77a43\\ef495f44.png)

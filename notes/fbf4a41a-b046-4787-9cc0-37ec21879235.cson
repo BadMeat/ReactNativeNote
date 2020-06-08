@@ -1,0 +1,57 @@
+createdAt: "2020-03-19T03:56:39.191Z"
+updatedAt: "2020-03-19T03:57:55.060Z"
+type: "MARKDOWN_NOTE"
+folder: "67fb8d4c05bf1c0bf02d"
+title: "WebView + Loading"
+tags: []
+content: '''
+  ## WebView + Loading
+  
+  ```js
+      constructor(props) {
+          super(props)
+          this.state = {
+              visible: true
+          }
+      }
+      
+      render() {
+      
+          return (
+              <View style={{ flex: 1 }}>
+                  <WebView
+                      startInLoadingState={true}
+                      scrollEnabled={true}
+                      key={this.state.key}
+                      onLoad={() => this.hideLoading()}
+                      source={{ uri: this.props.url }}
+                      onNavigationStateChange={this.setWebView}
+                  />
+                  {
+                      this.state.visible && (
+                          <ActivityIndicator size="large" style={{ position: 'absolute', left: 0, bottom: 0, right: 0, top: 0 }} />
+                      )
+                  }
+              </View>
+          )
+      }
+      
+      hideLoading() {
+          this.setState({
+              visible: false
+          })
+      }
+  
+      resetWeb = () => {
+          if (this.state.isWebChange) {
+              this.setState({
+                  key: this.state.key + 1,
+                  visible: true
+              })
+          }
+      }
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

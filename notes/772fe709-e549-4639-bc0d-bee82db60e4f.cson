@@ -1,0 +1,28 @@
+createdAt: "2020-03-26T06:32:39.902Z"
+updatedAt: "2020-03-26T06:33:13.583Z"
+type: "MARKDOWN_NOTE"
+folder: "c4686cbedf78bed63642"
+title: "Bottom"
+tags: []
+content: '''
+  ## Bottom
+  
+  >**Render Bottom Icon***
+  >
+  ```js
+     <Tab.Screen
+      name="Home"
+      component={HomeScreen}
+      options={{
+          title:'Waddduh',
+          tabBarLabel: "Home",
+          tabBarIcon: (props) => (
+              Apbn(props, 2)
+          )
+      }}
+  />
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

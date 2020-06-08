@@ -1,0 +1,223 @@
+createdAt: "2020-04-03T07:08:39.584Z"
+updatedAt: "2020-04-03T07:09:06.990Z"
+type: "MARKDOWN_NOTE"
+folder: "6c6b706546432d7992e8"
+title: "CHART BAR WITH LINE"
+tags: []
+content: '''
+  ## CHART BAR WITH LINE
+  
+  ```js
+  import React, { Component } from 'react'
+  import { View, Dimensions, ScrollView } from 'react-native'
+  import { BarChart, XAxis, Grid, YAxis, AreaChart } from 'react-native-svg-charts'
+  import * as scale from 'd3-scale'
+  import { Circle, Path, Rect, Line } from 'react-native-svg'
+  import Svg from 'react-native-svg'
+  import { Text } from 'react-native-svg'
+  
+  export default class ApbnScreen extends Component {
+  
+      constructor(props) {
+          super(props)
+      }
+  
+      componentDidMount() {
+          console.log(this.props.aba)
+      }
+  
+      render() {
+  
+          const data = [50, 60, 70, 80, 90, 95]
+          const data2 = [10, 20, 30, 40, 50, 60]
+          const data4 = [50, 55, 70, 80, 90, 95]
+          const dataTahun = [2015, 2016, 2017, 2018, 2019, 2020]
+          const dataPertumbuhan = [0, 7, 16, 5, 10, 20]
+  
+  
+          const Decorator = ({ x, y, data }) => {
+              return data.map((value, index) => (
+                  <Rect
+                      width="8"
+                      height="8"
+                      x={x(index)}
+                      y={y(value) - 3}
+                      key={index}
+                      strokeWidth="2"
+                      fill={'rgb(7, 235, 21)'}
+                  />
+              ))
+          }
+  
+          const MyLine = ({ line }) => {
+              return <Path
+                  d={line}
+                  stroke={'rgba(7, 166, 17)'}
+                  strokeWidth={4}
+                  fill={'none'}
+              />
+          }
+  
+          const MyText = ({ x, y, data }) => {
+              return data.map((value, index) => {
+  
+                  let dataTemp
+                  if (index == 0) {
+                      dataTemp = ''
+                  } else {
+                      dataTemp = `${dataPertumbuhan[index]}%`
+                  }
+  
+  
+                  return <Text
+                      fill="none"
+                      // stroke="red"
+                      fontSize="12"
+                      key={index}
+                      fontWeight="bold"
+                      x={x(index) - 20}
+                      fill={'red'}
+                      y={y(value) - 5}
+                      textAnchor="middle"
+                  >
+                      {
+                          `${dataTemp}`
+                      }
+                  </Text>
+              })
+          }
+  
+          return (
+              <View style={{
+                  flex: 1,
+                  justifyContent: 'flex-end',
+              }} >
+                  
+                  {/* Chart Sebelah kanan */}
+  
+                  <View style={{ height: 400, position: 'absolute', left: 10, right: 0 }}>
+                      <BarChart
+                          style={{ flex: 1, marginLeft: 20, marginEnd: 20 }}
+                          data={data2}
+                          gridMin={0}
+                          gridMax={150}
+                          spacingInner={0.8}
+                          yAccessor={({ item }) => item}
+                          svg={{ fill: 'rgba(227, 125, 23, 1)' }}
+                          contentInset={{ top: 10, bottom: 10 }}
+                      >
+                      </BarChart>
+  
+                      <XAxis
+                          style={{ marginTop: 10 }}
+                          data={data2}
+                          scale={scale.scaleBand}
+  
+                          svg={{
+                              fill: 'transparent',
+                              fontSize: 10,
+                          }}
+                          spacingInner={0.8}
+                          formatLabel={(value, index) => data2[index]}
+                          labelStyle={{ color: 'black' }}
+                      />
+  
+                  </View>
+  
+                  {/* Chart sebelah kiri */}
+                  <View style={{ height: 400, position: 'absolute', left: 0, right: 10 }}>
+                      <BarChart
+                          style={{ flex: 1, marginLeft: 20, marginEnd: 20 }}
+                          data={data}
+                          gridMin={0}
+                          spacingInner={0.8}
+                          yAccessor={({ item }) => item}
+                          svg={{ fill: 'rgba(25, 129, 209, 1)' }}
+                          contentInset={{ top: 10, bottom: 10 }}
+                          spacing={0.2}
+                          gridMax={150}
+                      >
+                      </BarChart>
+  
+                      <XAxis
+                          style={{ marginTop: 10 }}
+                          data={data}
+                          scale={scale.scaleBand}
+                          svg={{
+                              fill: 'transparent',
+                              fontSize: 10,
+                          }}
+                          spacingInner={0.4}
+                          formatLabel={(value, index) => data[index]}
+                          labelStyle={{ color: 'black' }}
+                      />
+  
+                  </View>
+  
+  
+  
+                  {/* Garis yang atas */}
+  
+                  <View style={{ height: 400, position: 'absolute', left: 0, right: 0, justifyContent: 'flex-end' }}>
+                      <AreaChart
+                          gridMin={0}
+                          gridMax={150}
+                          style={{ height: 400 }}
+                          data={data4}
+                          contentInset={{ top: 0, bottom: 80, left: 30, right: 30 }}
+                      >
+                          <MyLine />
+                          <MyText />
+                          <Decorator />
+                      </AreaChart>
+                  </View>
+  
+                  {/* Gari Hitam Horizontal */}
+                  <View style={{
+                      position: 'absolute',
+                      height: 400,
+                      right: 0, left: 0, bottom: 25,
+                      alignItems: 'flex-end',
+                      justifyContent: 'flex-end'
+                  }}>
+                      <Svg
+                          width={Dimensions.get('screen').width}
+                          height="10"
+                          fill="blue"
+                          stroke="black"
+                          color="blue"
+                      >
+                          <Line x1="0" y1="0" x2={Dimensions.get('screen').width} y2="0" stroke="black" strokeWidth="4" />
+  
+                      </Svg>
+                  </View>
+  
+  
+                  {/* Text Yang paling bawah */}
+                  <View style={{ height: 400, position: 'absolute', left: 20, right: 20, justifyContent: 'flex-end' }}>
+                      <XAxis
+                          style={{ marginTop: 10, marginBottom: 10 }}
+                          data={dataTahun}
+                          scale={scale.scaleBand}
+  
+                          svg={{
+                              fill: 'black',
+                              fontSize: 10,
+                          }}
+                          spacingInner={0.7}
+                          formatLabel={(value, index) => dataTahun[index]}
+                          labelStyle={{ color: 'black' }}
+                      />
+                      
+                  </View>
+              </View >
+          )
+      }
+  }
+  
+  
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

@@ -1,0 +1,483 @@
+createdAt: "2020-06-04T22:27:06.197Z"
+updatedAt: "2020-06-04T22:28:39.407Z"
+type: "MARKDOWN_NOTE"
+folder: "c4686cbedf78bed63642"
+title: "Bottom Navigation With Reset and Popup other"
+tags: []
+content: '''
+  ## Bottom Navigation With Reset and Popup other
+  
+  ```js
+  import React from "react"
+  import HomeScreen from "./component/HomeScreen";
+  import AnggaranScreen from "./component/AnggaranScreen";
+  import { View, Image, Text, TouchableOpacity, Platform } from "react-native";
+  import SearchScreen from "./component/SearchScreen";
+  import ApbnScreen from "./component/ApbnScreen";
+  import NewsDetailScreen from "./component/NewsDetailScreen";
+  import CommentScreen from "./component/CommentScreen";
+  import AccountScreen from "./component/AccountScreen";
+  import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+  import { createStackNavigator, TransitionSpecs, HeaderStyleInterpolators } from '@react-navigation/stack';
+  import { NavigationContainer } from "@react-navigation/native";
+  import * as RootNavigation from "./RootNavigation";
+  import OtherNavBar from "./component/common/OtherNavBar";
+  import NewsScreen from "./component/NewsScreen";
+  import AnggaranDetailScreen from "./component/AnggaranDetailScreen";
+  import AnggaranPersektor from "./component/AnggaranPersektor";
+  import PencarianScreen from "./component/PencarianScreen";
+  import AnggaranKlScreen from "./component/AnggaranKlScreen";
+  import AnggaranSubSectorScreen from "./component/AnggaranSubSectorScreen";
+  import SitusWebScreen from "./component/SitusWebScreen";
+  import AnggaranPerprogram from "./component/AnggaranPerprogram";
+  import LoginHeader from "./component/modal/LoginHeader";
+  import WebModal from "./component/modal/WebModal";
+  import CovidScreen from "./component/CovidScreen";
+  import CovidDetailScreen from "./component/CovidDetailScreen";
+  import CovidSisiScreen from "./component/CovidSisiScreen";
+  
+  const HOME = 1
+  const NEWS = 2
+  const ANGGARAN = 3
+  const APBN = 4
+  const Comment = 6
+  const SitusWeb = 7
+  const CORONA = 8
+  const LAINNYA = 5
+  
+  const BarLogo = (props, type) => {
+  
+      let settingImageFocused = require('../src/assets/images/ic_apbn.png')
+      let settingImageUnfocused = require('../src/assets/images/ic_apbn.png')
+  
+      switch (type) {
+          case HOME:
+              settingImageFocused = require('../src/assets/images/ic_beranda.png')
+              settingImageUnfocused = require('../src/assets/images/ic_beranda.png')
+              break
+          case NEWS:
+              settingImageFocused = require('../src/assets/images/ic_berita.png')
+              settingImageUnfocused = require('../src/assets/images/ic_berita.png')
+              break
+          case ANGGARAN:
+              settingImageFocused = require('../src/assets/images/ic_anggaran.png')
+              settingImageUnfocused = require('../src/assets/images/ic_anggaran.png')
+              break
+          case APBN:
+              settingImageFocused = require('../src/assets/images/ic_apbn.png')
+              settingImageUnfocused = require('../src/assets/images/ic_apbn.png')
+              break
+          case Comment:
+              settingImageFocused = require('../src/assets/images/ic_comment.png')
+              settingImageUnfocused = require('../src/assets/images/ic_comment.png')
+              break
+          case SitusWeb:
+              settingImageFocused = require('../src/assets/images/ic_web.png')
+              settingImageUnfocused = require('../src/assets/images/ic_web.png')
+              break
+          case CORONA:
+              settingImageFocused = require('../src/assets/images/ic_virus.png')
+              settingImageUnfocused = require('../src/assets/images/ic_virus.png')
+              break
+          case LAINNYA:
+              settingImageFocused = require('../src/assets/images/ic_more.png')
+              settingImageUnfocused = require('../src/assets/images/ic_more.png')
+              break
+      }
+  
+      let settingImage = props.focused ? settingImageFocused : settingImageUnfocused
+  
+      let settingStyleFocused = { width: 24, height: 24 }
+      const settingStyleUnfocused = { width: 24, height: 24, tintColor: 'rgba(0,0,0,0.3)' }
+      if (type === CORONA) {
+          settingStyleFocused = { width: 24, height: 24, tintColor: 'red' }
+      }
+      let styleImage = props.focused ? settingStyleFocused : settingStyleUnfocused
+      return (
+          <View style={{ marginTop: 15 }}>
+              <Image source={settingImage} style={styleImage} />
+          </View>
+      );
+  }
+  
+  const AppLogo = () => {
+      return (
+          <View >
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <Image
+                      style={{ width: 30, height: 30, top: 0, right: 10 }}
+                      source={require('./assets/images/ic_kemenkeu_pure.png')}
+                  />
+                  <Text style={{ fontFamily: 'Arkitech-Bold', color: 'white', fontSize: 16 }}>TRANPARANSI</Text>
+                  <Text style={{ fontFamily: 'Arkitech-Bold', color: '#FFC200', fontSize: 16 }}> APBN</Text>
+              </View>
+          </View >
+      )
+  }
+  
+  const Tab = createBottomTabNavigator()
+  const Stack = createStackNavigator()
+  
+  const MyTransition = {
+      gestureDirection: 'horizontal',
+      transitionSpec: {
+          open: TransitionSpecs.TransitionIOSSpec,
+          close: TransitionSpecs.TransitionIOSSpec
+      },
+      headerStyleInterpolator: HeaderStyleInterpolators.forFade
+  }
+  
+  const HomeStack = () => {
+      return (
+          <Stack.Navigator screenOptions={{
+              animationEnabled: false
+          }}>
+              <Stack.Screen options={{
+                  headerShown: false,
+                  MyTransition
+              }} name="HomeStack" component={HomeScreen} />
+              <Stack.Screen options={() => (headerLogo())}
+                  name="Search" component={PencarianScreen}
+              />
+              <Stack.Screen name="CovidSisiScreen" component={CovidSisiScreen}
+                  options={() => (optionWithBackButton())} />
+              <Stack.Screen name="CovidDetailScreen" component={CovidDetailScreen}
+                  options={() => (optionWithBackButton())} />
+          </Stack.Navigator>
+      )
+  }
+  
+  const NewsStack = () => {
+      return (
+          <Stack.Navigator screenOptions={{ animationEnabled: false }}>
+              <Stack.Screen name="NewsStack" component={NewsScreen}
+                  options={() => (headerLogo())} />
+              <Stack.Screen name="NewsDetail" component={NewsDetailScreen}
+                  options={() => (headerLogo())} />
+          </Stack.Navigator>
+      )
+  }
+  
+  const AnggaranStack = () => {
+      return (
+          <Stack.Navigator screenOptions={{ animationEnabled: false }}>
+              <Stack.Screen name="AnggaranStack" component={AnggaranScreen}
+                  options={() => (optionSearchRightButton())} />
+              <Stack.Screen name="Search" component={PencarianScreen}
+                  options={() => (optionWithBackButton())} />
+              <Stack.Screen name="BudgetSector" component={AnggaranPersektor}
+                  options={() => (optionWithBackButton())} />
+              <Stack.Screen name="BudgetKL" component={AnggaranKlScreen}
+                  options={() => (optionWithBackButton())} />
+              <Stack.Screen name="BudgetSubSector" component={AnggaranSubSectorScreen}
+                  options={() => (optionWithBackButton())} />
+              <Stack.Screen name="BudgetProgram" component={AnggaranPerprogram}
+                  options={() => (optionWithBackButton())} />
+              <Stack.Screen name="BudgetDetail" component={AnggaranDetailScreen}
+                  options={() => (optionWithBackButton())} />
+          </Stack.Navigator>
+      )
+  }
+  
+  const APBNStack = () => {
+      return (
+          <Stack.Navigator screenOptions={{
+              animationEnabled: false
+          }}>
+              <Stack.Screen name="APBNStack" component={ApbnScreen}
+                  options={() => (headerLogo())} />
+          </Stack.Navigator>
+      )
+  }
+  
+  const CommentStack = () => {
+      return (
+          <Stack.Navigator screenOptions={{
+              animationEnabled: false
+          }}>
+              <Stack.Screen name="CommentStack" component={CommentScreen}
+                  options={() => (headerLogo())} />
+          </Stack.Navigator>
+      )
+  }
+  
+  const SitusWebStack = () => {
+      return (
+          <Stack.Navigator screenOptions={{
+              animationEnabled: false
+          }}>
+              <Stack.Screen name="SitusWebStack" component={SitusWebScreen}
+                  options={() => (headerLogo())} />
+              <Stack.Screen name="SitusDetail" component={WebModal}
+                  options={() => (optionWithBackButton())} />
+          </Stack.Navigator>
+      )
+  }
+  
+  const CovidStack = () => {
+      return (
+          <Stack.Navigator screenOptions={{
+              animationEnabled: false
+          }}>
+              <Stack.Screen name="CovidStack" component={CovidScreen}
+                  options={() => (headerLogo())} />
+              <Stack.Screen name="CovidSisiScreen" component={CovidSisiScreen}
+                  options={() => (optionWithBackButton())} />
+              <Stack.Screen name="CovidDetailScreen" component={CovidDetailScreen}
+                  options={() => (optionWithBackButton())} />
+          </Stack.Navigator>
+      )
+  }
+  
+  const OtherStack = () => {
+      return (
+          <Stack.Navigator screenOptions={{
+              animationEnabled: false
+          }}>
+              <Stack.Screen name="Account" component={AccountScreen}
+                  options={() => (headerLogo())} />
+              <Stack.Screen name="Comment" component={CommentScreen}
+                  options={() => (headerLogo())} />
+              <Stack.Screen name="Web" component={SitusWebScreen}
+                  options={() => (headerLogo())} />
+          </Stack.Navigator>
+      )
+  }
+  
+  const RouterComponent = () => {
+      return (
+          <NavigationContainer ref={RootNavigation.navigationRef}>
+              <Tab.Navigator
+                  tabBarOptions={{
+                      activeTintColor: 'black',
+                      tabStyle: {
+                          opacity: 0.98,
+                          color: 'black',
+                      },
+                      style: {
+                          // height: '12%',
+                          ...Platform.select({
+                              android: {
+                                  paddingBottom: 15,
+                                  height: 72,
+                              },
+                              ios: {
+                                  height: 100,
+                              }
+                          })
+                      }
+                  }}>
+                  <Tab.Screen name="Home" component={HomeStack}
+                      options={bottomLogo('Beranda', HOME)}
+                      listeners={resetListener('Home', 0, 'HomeStack')}
+                  />
+                  <Tab.Screen
+                      name="News" component={NewsStack}
+                      options={bottomLogo('Berita', NEWS)}
+                      listeners={resetListener('News', 1, 'NewsStack')}
+                  />
+                  <Tab.Screen
+                      name="Anggaran" component={AnggaranStack}
+                      options={bottomLogo('Anggaran', ANGGARAN)}
+                      listeners={resetListener('Anggaran', 2, 'AnggaranStack')}
+                  />
+                  <Tab.Screen
+                      name="Comment" component={CommentStack}
+                      options={bottomLogo('Comment', Comment)}
+                      listeners={resetListener('Comment', 3, 'CommentStack')} />
+                  <Tab.Screen
+                      name="SitusWeb" component={SitusWebStack}
+                      options={bottomLogo('SitusWeb', SitusWeb)}
+                  // listeners={resetListener('SitusWeb', 4, 'SitusWebStack')} 
+                  />
+  
+                  {/* <Tab.Screen
+                      name="Covid" component={CovidStack}
+                      options={bottomLogo('Covid', CORONA)}
+                  // listeners={resetListener('Covid', 5, 'CovidStack')}
+                  /> */}
+  
+                  {/* <Tab.Screen name="Other"
+                      component={OtherStack}
+                      options={{
+                          tabBarLabel: 'Lainnya',
+                          tabBarIcon: (props) => (<OtherNavBar data={props} />),
+                      }}
+  
+                      listeners={{
+                          tabPress: e => e.preventDefault(),
+                      }}
+                  /> */}
+              </Tab.Navigator>
+          </NavigationContainer >
+      )
+  }
+  
+  const resetListener = (source, index, destination) => (
+      {
+          tabPress: e => {
+              e.preventDefault();
+              RootNavigation.navigate(source)
+              RootNavigation.reset(destination, index)
+          },
+      }
+  )
+  
+  const headerLogo = () => (
+      {
+          headerTitleAlign: 'center',
+          headerTitle: () => <AppLogo />,
+          headerStyle: { backgroundColor: '#006699' },
+          headerLeft: () => null,
+          headerRight: () => (
+              <View style={{ marginEnd: 10 }}>
+                  <LoginHeader />
+              </View>
+          )
+      }
+  )
+  
+  const bottomLogo = (menu, type) => (
+      {
+          tabBarLabel: menu,
+          tabBarIcon: (props) => (BarLogo(props, type))
+      }
+  )
+  
+  const backButton = () => (
+      <View>
+          <TouchableOpacity onPress={() => RootNavigation.goBack()}>
+              <Image style={{ marginStart: 10, tintColor: 'white', width: 23, height: 23 }}
+                  source={require('./assets/images/ic_left.png')} />
+          </TouchableOpacity>
+      </View>
+  )
+  
+  const optionWithBackButton = () => (
+      {
+          headerTitleAlign: 'center',
+          headerTitle: () => <AppLogo />,
+          headerStyle: { backgroundColor: '#006699' },
+          headerLeft: () => (backButton()),
+      }
+  )
+  
+  const optionSearchRightButton = () => (
+      {
+          headerTitleAlign: 'center',
+          headerTitle: () => <AppLogo />,
+          headerStyle: { backgroundColor: '#006699' },
+          headerRight: () =>
+              <View>
+                  <TouchableOpacity onPress={() => RootNavigation.navigate('Search')}>
+                      <Image style={{ marginEnd: 10, tintColor: 'white', width: 28, height: 28 }}
+                          source={require('./assets/images/ic_search.png')
+                          } />
+                  </TouchableOpacity>
+              </View>
+      }
+  )
+  
+  export default RouterComponent
+  ```
+  
+  **Other Navbar**
+  ```js
+  import React, { Component } from 'react'
+  import { Text, View, Image, StyleSheet, } from 'react-native'
+  import {
+      Menu,
+      MenuOptions,
+      MenuOption,
+      MenuTrigger,
+  } from 'react-native-popup-menu';
+  import * as RootNavigation from '../../RootNavigation'
+  
+  export default class OtherNavBar extends Component {
+      render() {
+          const { color } = this.props.data
+          return (
+              <View style={{ width: 50, justifyContent: 'center', alignItems: 'center', marginTop: 15 }}>
+                  <Menu>
+                      <MenuTrigger style={{ justifyContent: 'center', alignItems: 'center', width: 50 }} >
+                          <Image
+                              style={{ width: 24, height: 24, tintColor: color }}
+                              source={require('../../assets/images/ic_more.png')}
+                          />
+                      </MenuTrigger>
+                      <MenuOptions optionsContainerStyle={{ width: 175 }} style={{ margin: 15 }}>
+                          <MenuOption onSelect={() => RootNavigation.navigate('Other', { screen: 'Web' })} >
+                              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                  <Image
+                                      style={styles.imageOpoUp}
+                                      source={require('../../assets/images/ic_berita.png')}
+                                  />
+                                  <Text style={styles.textPopUp}>Situs Web</Text>
+                              </View>
+                          </MenuOption>
+                          <MenuOption onSelect={() => RootNavigation.navigate('Other', { screen: 'Comment' })} >
+                              <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 20 }}>
+                                  <Image
+                                      style={styles.imageOpoUp}
+                                      source={require('../../assets/images/ic_comment.png')}
+                                  />
+                                  <Text style={styles.textPopUp}>Komentar</Text>
+                              </View>
+                          </MenuOption>
+                          <MenuOption onSelect={() => RootNavigation.navigate('Other', { screen: 'Account' })} >
+                              <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 20 }}>
+                                  <Image
+                                      style={styles.imageOpoUp}
+                                      source={require('../../assets/images/ic_send.png')}
+                                  />
+                                  <Text style={styles.textPopUp}>Akun</Text>
+                              </View>
+                          </MenuOption>
+                      </MenuOptions>
+                  </Menu>
+              </View>
+          )
+      }
+  }
+  
+  const styles = StyleSheet.create({
+      textPopUp: {
+          color: 'gray', marginStart: 15
+      },
+      imageOpoUp: { width: 25, height: 25, tintColor: 'grey' }
+  })
+  ```
+  
+  **Root Navigation**
+  ```js
+  import React from 'react'
+  import { StackActions } from '@react-navigation/native';
+  
+  
+  export const navigationRef = React.createRef()
+  
+  export function navigate(name, params) {
+      navigationRef.current?.navigate(name, params)
+  }
+  
+  export function goBack() {
+      navigationRef.current?.goBack()
+  }
+  
+  export function reset(resetName, index) {
+      navigationRef.current?.reset({
+          index: index,
+          routes: [
+              { name: resetName }
+          ]
+      })
+  }
+  
+  export function replace(routeName) {
+      navigationRef.current?.dispatch(StackActions.replace(routeName))
+  }
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

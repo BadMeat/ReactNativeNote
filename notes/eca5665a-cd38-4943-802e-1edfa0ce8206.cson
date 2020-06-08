@@ -1,0 +1,51 @@
+createdAt: "2020-05-31T01:12:41.982Z"
+updatedAt: "2020-05-31T01:15:00.426Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Common"
+tags: []
+content: '''
+  ## Common
+  
+  **Membuat Component Dikumpulkan di index**
+  >**Component**
+  >
+  
+  ```js
+  import React, { Component } from 'react'
+  import { Text, View } from 'react-native'
+  
+  class ListItem extends Component {
+  
+  
+      render() {
+          const { item } = this.props.data
+          return (
+              <View>
+                  <Text> {item.info} </Text>
+                  <Text> {item.price} </Text>
+              </View>
+          )
+      }
+  }
+  
+  export { ListItem } 
+  ```
+  >**Index**
+  >
+  ```js
+  export * from './Background'
+  export * from './ListItem'
+  ```
+  
+  >**Cara Memakainya**
+  >
+  ```js
+  import { ListItem } from './commons'
+  ```
+  
+  ---
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

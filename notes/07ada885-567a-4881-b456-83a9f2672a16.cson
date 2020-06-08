@@ -1,0 +1,265 @@
+createdAt: "2020-04-01T06:18:03.680Z"
+updatedAt: "2020-04-01T06:18:21.584Z"
+type: "MARKDOWN_NOTE"
+folder: "6c6b706546432d7992e8"
+title: "CHART PIE WITH LINE"
+tags: []
+content: '''
+  ## CHART PIE WITH LINE
+  
+  ```js
+  import React, { Component } from 'react'
+  import { View, Image, Button, StyleSheet } from 'react-native'
+  import { PieChart } from 'react-native-svg-charts'
+  import { Circle, G, Line, Text } from 'react-native-svg'
+  import NormalText from './common/NormalText'
+  
+  const styles = StyleSheet.create({
+      normal: {
+          fontFamily: 'TrebuchetMS',
+          fontSize: 12
+      },
+      textBlue: {
+          color: '#006699',
+          fontFamily: 'Arkitech-Bold',
+          fontSize: 12
+      },
+      textYellow: {
+          color: '#FFC200',
+          fontFamily: 'Arkitech-Bold',
+          fontSize: 12
+      }
+  })
+  
+  export default class BudgetScreen extends Component {
+  
+      render() {
+          const data = [
+              {
+                  key: 1,
+                  amount: 50,
+                  title: 'Belanja',
+                  total: '1.461.0 Triliyun',
+                  svg: { fill: '#e89356' },
+              },
+              {
+                  key: 2,
+                  title: `Makan`,
+                  total: '0.4 Triliyun',
+                  amount: 50,
+                  svg: { fill: '#63f7f5' }
+              },
+              {
+                  key: 3,
+                  amount: 40,
+                  total: '375.6 Triliyun',
+                  title: 'Mabuk',
+                  svg: { fill: '#f2ea49' }
+              },
+              {
+                  key: 4,
+                  amount: 200,
+                  total: '854.3 Triliyun',
+                  title: 'Pijat',
+                  svg: { fill: '#d966ff' }
+              }
+          ]
+  
+          const data2 = [
+              {
+                  key: 1,
+                  amount: 70,
+                  title: 'Belanja',
+                  total: '70 Triliyun',
+                  svg: { fill: '#e89356' },
+              },
+              {
+                  key: 2,
+                  title: `Makan`,
+                  total: '12 Triliyun',
+                  amount: 12,
+                  svg: { fill: '#63f7f5' }
+              },
+              {
+                  key: 3,
+                  amount: 80,
+                  total: '80 Triliyun',
+                  title: 'Mabuk',
+                  svg: { fill: '#f2ea49' }
+              },
+              {
+                  key: 4,
+                  amount: 36,
+                  total: '36 Triliyun',
+                  title: 'Pijat',
+                  svg: { fill: '#d966ff' }
+              }
+          ]
+  
+          const Labels = ({ slices, height, width }) => {
+              return slices.map((slice, index) => {
+                  const { labelCentroid, pieCentroid, data } = slice;
+                  return (
+                      <G
+                          key={index}
+                      >
+                          <Line
+                              x1={labelCentroid[0]}
+                              y1={labelCentroid[1]}
+                              x2={pieCentroid[0]}
+                              y2={pieCentroid[1]}
+                              stroke={data.svg.fill}
+                          />
+                          <Circle
+                              cx={labelCentroid[0]}
+                              cy={labelCentroid[1]}
+                              r={40}
+                              fill={'white'}
+                          />
+                          <Text
+                              fontFamily={'Arkitech-Bold'}
+                              color={'white'}
+                              key={index}
+                              x={labelCentroid[0]}
+                              y={labelCentroid[1]}
+                              fill={'black'}
+                              textAnchor={'middle'}
+                              alignmentBaseline={'center'}
+                              fontSize={7}
+                              stroke={'black'}
+                              strokeWidth={0.2}>
+                              {
+                                  `${data.title}`
+                              }
+                          </Text>
+                          <Text
+                              fontFamily={'Arkitech-Bold'}
+                              color={'white'}
+                              key={index + 1000}
+                              x={labelCentroid[0] - 40}
+                              y={labelCentroid[1] + 10}
+                              fill={'black'}
+                              textAnchor={'middle'}
+                              alignmentBaseline={'middle'}
+                              fontSize={7}
+                              stroke={'black'}
+                              strokeWidth={0.2}>
+                              {
+                                  `
+                                  ${data.total}`
+                              }
+                          </Text>
+                      </G>
+                  )
+              })
+          }
+  
+          const Labels2 = ({ slices, height, width }) => {
+              return slices.map((slice, index) => {
+                  const { labelCentroid, pieCentroid, data } = slice;
+                  return (
+                      <G
+                          key={index}
+                      >
+                          <Line
+                              x1={labelCentroid[0]}
+                              y1={labelCentroid[1]}
+                              x2={pieCentroid[0]}
+                              y2={pieCentroid[1]}
+                              stroke={data.svg.fill}
+                          />
+                          <Circle
+                              cx={labelCentroid[0]}
+                              cy={labelCentroid[1]}
+                              r={40}
+                              fill={'white'}
+                          />
+                          <Text
+                              fontFamily={'Arkitech-Bold'}
+                              color={'white'}
+                              key={index}
+                              x={labelCentroid[0]}
+                              y={labelCentroid[1]}
+                              fill={'black'}
+                              textAnchor={'middle'}
+                              alignmentBaseline={'center'}
+                              fontSize={7}
+                              stroke={'black'}
+                              strokeWidth={0.2}>
+                              {
+                                  `${data.title}`
+                              }
+                          </Text>
+                          <Text
+                              fontFamily={'Arkitech-Bold'}
+                              color={'white'}
+                              key={index + 1000}
+                              x={labelCentroid[0] - 40}
+                              y={labelCentroid[1] + 10}
+                              fill={'black'}
+                              textAnchor={'middle'}
+                              alignmentBaseline={'middle'}
+                              fontSize={7}
+                              stroke={'black'}
+                              strokeWidth={0.2}>
+                              {
+                                  `
+                                  ${data.total}`
+                              }
+                          </Text>
+                      </G>
+                  )
+              })
+          }
+  
+          return (
+              <View style={{ flex: 1 }}>
+                  <View style={{ marginTop: 20, flexDirection: 'row', marginStart: 10 }}>
+                      <NormalText label="TOTAL" style={styles.textYellow} />
+                      <NormalText label="PENDAPATAN" style={styles.textBlue} />
+                  </View>
+                  <View style={{ marginTop: 20, marginStart: 10 }}>
+                      <NormalText label="Tahun" style={styles.normal} />
+                  </View>
+                  <View style={{ flex: 2 }}>
+                      <PieChart
+                          style={{ height: 300 }}
+                          valueAccessor={({ item }) => item.amount}
+                          data={data}
+                          spacing={0}
+                          innerRadius={2}
+                          outerRadius={55}
+                          labelRadius={130}>
+                          <Labels />
+                      </PieChart>
+                  </View>
+  
+                  <View style={{ marginTop: 20, flexDirection: 'row', marginStart: 10 }}>
+                      <NormalText label="Total" style={styles.textYellow} />
+                      <NormalText label="Belanja" style={styles.textBlue} />
+                  </View>
+                  <View style={{ marginTop: 20, marginStart: 10 }}>
+                      <NormalText label="Tahun" style={styles.normal} />
+                  </View>
+                  <View style={{ flex: 2 }}>
+                      <PieChart
+                          style={{ height: 300 }}
+                          valueAccessor={({ item }) => item.amount}
+                          data={data2}
+                          spacing={0}
+                          innerRadius={2}
+                          outerRadius={55}
+                          labelRadius={150}>
+                          <Labels2 />
+                      </PieChart>
+                  </View>
+              </View>
+          )
+      }
+  }
+  
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

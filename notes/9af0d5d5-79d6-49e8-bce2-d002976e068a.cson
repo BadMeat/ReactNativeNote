@@ -1,0 +1,177 @@
+createdAt: "2020-03-30T11:37:05.254Z"
+updatedAt: "2020-03-30T11:39:34.819Z"
+type: "MARKDOWN_NOTE"
+folder: "6c6b706546432d7992e8"
+title: "CHART BAR VERTICAL"
+tags: []
+content: '''
+  ## CHART BAR VERTICAL
+  
+  ```js
+  import React, { Component } from 'react'
+  import { Text, View, ScrollView, FlatList, StyleSheet } from 'react-native'
+  import * as scale from 'd3-scale'
+  import { BarChart, XAxis } from 'react-native-svg-charts'
+  
+  const DATA = [
+      {
+          id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+          title: '2015',
+      },
+      {
+          id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+          title: '2016',
+      },
+      {
+          id: '58694a0f-3da1-471f-bd96-145571e29d72',
+          title: '2017',
+      },
+      {
+          id: '58694a0f-3da1-471f-bd96-145571e29d72',
+          title: '2018',
+      }, {
+          id: '58694a0f-3da1-471f-bd96-145571e29d72',
+          title: '2019',
+      },
+  ];
+  
+  const DATA_KEUANGAN = [
+      {
+          id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+          title: ' ',
+          value1: 2015,
+          value2: 2016,
+          value3: 2017,
+          value4: 2018,
+          value5: 2019
+      },
+      {
+          id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+          title: 'Penerimaan Perpajakan',
+          value1: 1240,
+          value2: 12850,
+          value3: 15188,
+          value4: 16431,
+          value5: 18657
+      },
+      {
+          id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+          title: 'PNBP',
+          value1: 1240,
+          value2: 12850,
+          value3: 15188,
+          value4: 16431,
+          value5: 18657
+      },
+      {
+          id: '58694a0f-3da1-471f-bd96-145571e29d72',
+          title: 'HIBAH',
+          value1: 1240,
+          value2: 12850,
+          value3: 15188,
+          value4: 16431,
+          value5: 18657
+      },
+  ];
+  
+  
+  export default class TabOne extends Component {
+  
+      render() {
+          const data = [14, 25, 26, 27, 28]
+          const pnbp = [1, 4, 2, 5, 9]
+  
+          return (
+              <View style={{ flex: 1, marginEnd: 10 }}>
+                  <View style={{ flex: 1 }}>
+                      {/* Bar */}
+                      <View style={{ flex: 1 }}>
+                          <View style={{ position: 'absolute', bottom: 0, top: 0, width: 200, right: 20 }}>
+                              <BarChart
+                                  style={{ flex: 1 }}
+                                  data={pnbp}
+                                  gridMin={0}
+                                  yMax={50}
+                                  svg={{ fill: 'rgb(23, 22, 244)' }}
+                                  contentInset={{ top: 10 }}
+                                  spacingInner={0.7}
+                              />
+                          </View>
+                          <View style={{ position: 'absolute', bottom: 0, top: 0, width: 200, right: 10 }}>
+                              <BarChart
+                                  style={{ flex: 1 }}
+                                  data={data}
+                                  gridMin={0}
+                                  yMax={100}
+                                  svg={{ fill: 'rgb(134, 65, 244)' }}
+                                  contentInset={{ top: 10 }}
+                                  spacingInner={0.7}
+                              />
+                          </View>
+                      </View>
+                  </View>
+                  <View style={{ alignItems: 'flex-end' }}>
+                      <FlatList
+                          scrollEnabled={false}
+                          data={DATA_KEUANGAN}
+                          renderItem={({ item, index }) => (
+                              <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'center' }}>
+                                  <View style={[styles.textBorder, index == 0 ? { borderTopWidth: 0 } : { borderBottomWidth: 1 }, { borderStartWidth: 1 }]}>
+                                      <Text style={{ fontSize: 8, borderColor: 'black', padding: 8, width: 150 }}>
+                                          {item.title}
+                                      </Text>
+                                  </View>
+                                  <View style={[styles.textBorder, index == 0 ? { borderTopWidth: 1 } : { borderBottomWidth: 1 }]}>
+                                      <Text style={styles.fontStyle}>
+                                          {item.value1}
+                                      </Text>
+                                  </View>
+  
+                                  <View style={[styles.textBorder, index == 0 ? { borderTopWidth: 1 } : { borderBottomWidth: 1 }]}>
+                                      <Text style={styles.fontStyle}>
+                                          {item.value2}
+                                      </Text>
+                                  </View>
+  
+                                  <View style={[styles.textBorder, index == 0 ? { borderTopWidth: 1 } : { borderBottomWidth: 1 }]}>
+                                      <Text style={styles.fontStyle}>
+                                          {item.value3}
+                                      </Text>
+                                  </View>
+  
+                                  <View style={[styles.textBorder, index == 0 ? { borderTopWidth: 1 } : { borderBottomWidth: 1 }]}>
+                                      <Text style={styles.fontStyle}>
+                                          {item.value4}
+                                      </Text>
+                                  </View>
+  
+                                  <View style={[styles.textBorder, index == 0 ? { borderTopWidth: 1 } : { borderBottomWidth: 1 }]}>
+                                      <Text style={styles.fontStyle}>
+                                          {item.value5}
+                                      </Text>
+                                  </View>
+                              </View>
+                          )}
+                          keyExtractor={(value, index) => String(index)}
+                      />
+                  </View>
+              </View>
+          )
+      }
+  }
+  
+  const styles = StyleSheet.create({
+      textBorder: {
+          borderRightWidth: 1,
+          borderBottomWidth: 1,
+          justifyContent: 'center', alignItems: 'center'
+      },
+      fontStyle: { fontSize: 8, padding: 8, width: 45, justifyContent: 'center', alignItems: 'center' }
+  })
+  
+  
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

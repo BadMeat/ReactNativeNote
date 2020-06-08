@@ -1,0 +1,168 @@
+createdAt: "2020-03-30T11:38:52.341Z"
+updatedAt: "2020-03-30T11:39:16.259Z"
+type: "MARKDOWN_NOTE"
+folder: "6c6b706546432d7992e8"
+title: "CHART LINE MEGOL"
+tags: []
+content: '''
+  ## CHART LINE MEGOL
+  
+  ```JS
+  import React, { Component } from 'react'
+  import { View, Dimensions } from 'react-native'
+  import * as scale from 'd3-scale'
+  import { LineChart, Grid, XAxis, BarChart } from 'react-native-svg-charts'
+  import * as shape from 'd3-shape'
+  import { Circle, G, Line, Rect, Text } from 'react-native-svg'
+  import Svg from 'react-native-svg'
+  
+  export default class TabThree extends Component {
+      render() {
+  
+          const data = [752, 684, 765, 846, 854, 909]
+          const data2 = [752, 684, 765, 846, 854, 909, 200]
+          const tahun = [2015, 2016, 2017, 2018, 2019, 2020]
+  
+          /**
+           * Both below functions should preferably be their own React Components
+           */
+  
+          const HorizontalLine = (({ y }) => (
+              <Line
+                  key={'zero-axis'}
+                  x1={'0%'}
+                  x2={'100%'}
+                  y1={y(50)}
+                  y2={y(50)}
+                  stroke={'grey'}
+                  strokeDasharray={[4, 8]}
+                  strokeWidth={2}
+              />
+          ))
+  
+          const Labels = ({ x, y, bandwidth, data }) => (
+              data.map((value, index) =>
+                  (
+                      <G
+                          x={x(index) - (75 / 2)}
+                          key={index}
+                          onPress={() => console.log('tooltip clicked')}
+                      >
+                          <G y={y(data[index] + 55)} x={47.5}>
+                              <Rect
+                                  height={20}
+                                  width={40}
+                                  fill={'#cfa604'}
+                                  ry={1}
+                                  rx={1}
+                              />
+                          </G>
+  
+                          <G y={y(data[index] + 55)} x={50}>
+                              <Rect
+                                  height={15}
+                                  width={35}
+                                  fill={'white'}
+                                  ry={1}
+                                  rx={1}
+                              />
+                          </G>
+                          <G x={75 / 2}>
+                              <Circle
+                                  cy={y(data[index])}
+                                  r={2}
+                                  stroke={'blue'}
+                                  strokeWidth={2}
+                                  fill={'blue'}
+                              />
+                              <Text
+                                  x={30}
+                                  fontSize={8}
+                                  fill={'black'}
+                                  dy={y(data[index])}
+                                  alignmentBaseline={'middle'}
+                                  textAnchor={'middle'}
+                              >
+                                  {data[index]}
+                              </Text>
+                          </G>
+                      </G>
+                  )
+              )
+          )
+  
+          return (
+              <View style={{backgroundColor: '#ebebeb', margin: 20, padding: 10}}>
+                  <LineChart
+                      yMin={0}
+                      yMax={1000}
+                      style={{ height: 200 }}
+                      data={data}
+                      svg={{
+                          stroke: 'blue',
+                          strokeWidth: 2,
+                      }}
+                      contentInset={{ top: 20, bottom: 20, right: 50, left: 50 }}
+                      curve={shape.curveLinear}
+                  >
+                      <Labels />
+  
+                  </LineChart>
+  
+                  <View style={{ position: 'absolute', top: 10, bottom: 10, left: 10, right: 10 }}>
+                      <LineChart
+                          yMin={0}
+                          yMax={1000}
+                          style={{ height: 200 }}
+                          data={data}
+                          svg={{
+                              stroke: 'blue',
+                              strokeWidth: 2,
+                          }}
+                          contentInset={{ top: 20, bottom: 20, right: 50, left: 50 }}
+                          curve={shape.curveLinear}
+                      >
+                      </LineChart>
+                  </View>
+  
+                  <View>
+                      <View style={{ position: 'absolute', bottom: 30 }}>
+                          <Svg height="1" width={Dimensions.get('screen').width - 80} left={10}>
+                              <Line x1="0" y1="0" x2={Dimensions.get('screen').width} y2="0" stroke="black" strokeWidth="2" />
+                          </Svg>
+                      </View>
+                      <XAxis
+                          style={{ marginTop: 10 }}
+                          data={data2}
+                          contentInset={{ left: 11, right: 11 }}
+                          scale={scale.scaleTime}
+                          svg={{ fill: 'rgba(0, 0, 0, 0.8)', fontSize: 8 }}
+                          formatLabel={(value, index) => index}
+                          labelStyle={{ color: 'black' }}
+                          formatLabel={(_, index) => '|'}
+                      />
+                      <XAxis
+                          style={{ marginTop: 10 }}
+                          data={tahun}
+                          contentInset={{ right: 0, left: 10, right: 10 }}
+                          scale={scale.scaleBand}
+                          svg={{ fill: 'rgba(0, 0, 0, 0.8)', fontSize: 8 }}
+                          formatLabel={(value, index) => index}
+                          labelStyle={{ color: 'black' }}
+                          formatLabel={(_, index) => ' ' + tahun[index]}
+                      />
+  
+                  </View>
+  
+              </View>
+  
+  
+          )
+      }
+  }
+  
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

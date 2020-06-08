@@ -1,0 +1,68 @@
+createdAt: "2020-03-27T01:10:53.827Z"
+updatedAt: "2020-03-27T01:15:58.705Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Keyboard Avoid View"
+tags: []
+content: '''
+  ## Keyboard Avoid View
+  
+  ```js
+      UNSAFE_componentWillMount() {
+          this.keyboardWillShowSub = Keyboard.addListener('keyboardWillShow', this.props.keyboardWillShow);
+          this.keyboardWillHideSub = Keyboard.addListener('keyboardWillHide', this.props.keyboardWillHide);
+      }
+  ```
+  
+  ```js
+      componentWillUnmount() {
+          this.keyboardWillShowSub.remove();
+          this.keyboardWillHideSub.remove();
+      }
+  ```
+  
+  ```js
+  
+  export const keyboardWillShow = (event) => {
+      const keyboardHeight = new Animated.Value(0);
+      Animated.timing(keyboardHeight, {
+          duration: event.duration,
+          toValue: event.endCoordinates.height,
+      }).start();
+      return {
+          type: KEYBOARD_HEIGHT,
+          payload: keyboardHeight
+      }
+  };
+  
+  export const keyboardWillHide = (event) => {
+      const keyboardHeight = new Animated.Value(0);
+      Animated.timing(keyboardHeight, {
+          duration: event.duration,
+          toValue: 0,
+      }).start();
+      return {
+          type: KEYBOARD_HEIGHT,
+          payload: keyboardHeight
+      }
+  };
+  ```
+  
+  ```js
+  const INITIAL_STATE = {
+      keyboardHeight: null,
+  }
+  
+  export default (state = INITIAL_STATE, action) => {
+      switch (action.type) {
+          case KEYBOARD_HEIGHT:
+              return { ...state, keyboardHeight: action.payload }
+          default:
+              return state
+      }
+  }
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

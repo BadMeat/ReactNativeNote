@@ -1,5 +1,5 @@
 createdAt: "2020-02-10T06:29:01.112Z"
-updatedAt: "2020-02-13T02:28:36.902Z"
+updatedAt: "2020-03-29T04:53:15.251Z"
 type: "MARKDOWN_NOTE"
 folder: "c31af992c900a03da312"
 title: "FlatList"
@@ -74,6 +74,8 @@ content: '''
   }
   ```
 '''
-linesHighlighted: []
+linesHighlighted: [
+  3
+]
 isStarred: false
 isTrashed: false

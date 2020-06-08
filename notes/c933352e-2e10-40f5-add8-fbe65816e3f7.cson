@@ -1,0 +1,19 @@
+createdAt: "2020-05-18T09:50:20.581Z"
+updatedAt: "2020-05-18T09:50:36.473Z"
+type: "MARKDOWN_NOTE"
+folder: "c4686cbedf78bed63642"
+title: "Pass Param on Nested Navigation"
+tags: []
+content: '''
+  ## Pass Param on Nested Navigation
+  
+  ```js
+  navigation.navigate('Root', {
+    screen: 'Settings',
+    params: { user: 'jane' },
+  });
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

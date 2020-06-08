@@ -1,0 +1,163 @@
+createdAt: "2020-03-26T07:38:26.586Z"
+updatedAt: "2020-03-26T10:10:57.697Z"
+type: "MARKDOWN_NOTE"
+folder: "c4686cbedf78bed63642"
+title: "Bottom With Stack"
+tags: []
+content: '''
+  ## Bottom With Stack
+  
+  ```js
+  import React from "react"
+  import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+  import HomeScreen from "./Component/HomeScreen";
+  import ProfileScreen from "./Component/ProfileScreen";
+  import { NavigationContainer } from "@react-navigation/native";
+  import { StyleSheet, Image, View } from "react-native";
+  import AnotherScreen from "./Component/AnotherScreen";
+  import { navigationRef } from './RootNavigate'
+  import { createStackNavigator } from '@react-navigation/stack';
+  import Woke from "./Component/Woke";
+  import HeaderNavbar from "./Component/HeaderNavbar";
+  
+  
+  const styles = StyleSheet.create({
+      tabBar: {
+          height: 60,
+          opacity: 0.98,
+          justifyContent: 'space-between',
+          marginBottom: 10,
+          color: 'black'
+      },
+      bottomNav: {
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: 10,
+      }
+  });
+  
+  const Apbn = (props, data) => {
+      let settingImageFocused = require('./Component/ic_send.png')
+      let settingImageUnfocused = require('./Component/ic_send.png')
+      switch (data) {
+          case 1:
+              settingImageFocused = require('./Component/ic_send.png')
+              settingImageUnfocused = require('./Component/ic_send.png')
+              break;
+          case 2:
+              settingImageFocused = require('./Component/ic_comment.png')
+              settingImageUnfocused = require('./Component/ic_comment.png')
+              break;
+          default:
+              settingImageFocused = require('./Component/ic_send.png')
+              settingImageUnfocused = require('./Component/ic_send.png')
+      }
+      let settingImage = props.focused ? settingImageFocused : settingImageUnfocused
+  
+      const settingStyleFocused = { width: 24, height: 24 }
+      const settingStyleUnfocused = { width: 24, height: 24, tintColor: 'rgba(0,0,0,0.3)' }
+      let styleImage = props.focused ? settingStyleFocused : settingStyleUnfocused
+      return (
+          <View style={styles.bottomNav}>
+              <Image source={settingImage} style={styleImage} />
+          </View>
+      );
+  }
+  
+  const Tab = createBottomTabNavigator();
+  const Stack = createStackNavigator()
+  
+  const HomeStack = () => {
+      return (
+          <Stack.Navigator>
+              <Stack.Screen
+                  name="Profile"
+                  options={({ navigation, route }) => ({
+                      headerTitle: 'haah',
+                      headerRight: () => (
+                          <HeaderNavbar />
+                      )
+                  })}
+                  component={ProfileScreen} />
+              <Stack.Screen
+                  name="Other"
+                  component={AnotherScreen} />
+          </Stack.Navigator>
+      )
+  }
+  
+  
+  const RouterComponent = () => {
+      return (
+          <NavigationContainer ref={navigationRef}>
+              <Tab.Navigator
+                  tabBarOptions={{
+                      activeTintColor: 'black',
+                      style: {
+                          backgroundColor: 'red'
+                      }
+                  }}
+              >
+  
+                  <Tab.Screen
+                      name="Home"
+                      component={HomeScreen}
+                      options={{
+                          title: 'Waddduh',
+                          tabBarLabel: "Home",
+                          tabBarIcon: (props) => (
+                              Apbn(props, 2)
+                          )
+                      }}
+                  />
+                  <Tab.Screen
+                      name="Settings"
+                      listeners={(prop) => ({
+                          tabPress: e => {
+                              e.preventDefault()
+                              prop.navigation.reset
+                              prop.navigation.navigate('Settings')
+                              prop.navigation.setOptions({
+                                  headerRight: () => (
+                                      <HeaderNavbar />
+                                  )
+                              })
+                          }
+                      })}
+                      component={Woke}
+                      options={{
+                          tabBarLabel: "Setting",
+                          tabBarIcon: (props) => (
+                              Apbn(props, 1)
+                          )
+                      }} />
+                  <Tab.Screen
+                      name="Other"
+                      component={HomeStack}
+                      options={{
+                          tabBarLabel: "Other",
+                          tabBarIcon: (props) => (
+                              Apbn(props, 1)
+                          )
+                      }} />
+              </Tab.Navigator>
+          </NavigationContainer>
+  
+      );
+  }
+  
+  export default RouterComponent
+  ```
+  
+  ```js
+  import React from 'react'
+  export const navigationRef = React.createRef()
+  
+  export function navigate(name, params) {
+      navigationRef.current?.navigate(name, params)
+  }
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

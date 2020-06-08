@@ -1,0 +1,46 @@
+createdAt: "2020-06-01T17:13:09.472Z"
+updatedAt: "2020-06-01T17:14:12.728Z"
+type: "MARKDOWN_NOTE"
+folder: "c4686cbedf78bed63642"
+title: "Header Logo"
+tags: []
+content: '''
+  ## Header Logo
+  
+  ```js
+  const headerLogo = () => (
+      {
+          headerTitleAlign: 'center',
+          headerTitle: () => <AppLogo />,
+          headerStyle: { backgroundColor: '#006699' },
+          headerLeft: () => null,
+          headerRight: () => (
+              <View style={{ marginEnd: 10 }}>
+                  <LoginHeader />
+              </View>
+          )
+      }
+  )
+  ```
+  
+  ```js
+  const HomeStack = () => {
+      return (
+          <Stack.Navigator screenOptions={{
+              animationEnabled: false
+          }}>
+              <Stack.Screen options={{
+                  headerShown: false,
+                  MyTransition
+              }} name="HomeStack" component={HomeScreen} />
+              <Stack.Screen options={() => (headerLogo())}
+                  name="Search" component={PencarianScreen}
+              />
+          </Stack.Navigator>
+      )
+  }
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

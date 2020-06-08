@@ -1,0 +1,61 @@
+createdAt: "2020-04-27T00:15:22.959Z"
+updatedAt: "2020-04-27T00:17:22.195Z"
+type: "MARKDOWN_NOTE"
+folder: "c4686cbedf78bed63642"
+title: "Header Right"
+tags: []
+content: '''
+  ## Header Right
+  
+  >**from router**
+  >
+  ```js
+  
+  const AddForm = () => (
+      <View style={{ right: 10 }}>
+          <TouchableOpacity onPress={() => Navigation.navigate('Add')}>
+              <Icon
+                  name='plus-square'
+                  size={24}
+                  color='black'
+              />
+          </TouchableOpacity>
+      </View >
+  )
+  
+  const AddStack = () => (
+      <Stack.Navigator screenOptions={{
+          headerRight: () => (<AddForm />)
+      }}>
+          <Stack.Screen name="List" component={ListScreen} />
+          <Stack.Screen name="Add" component={AddScreen} />
+      </Stack.Navigator>
+  )
+  ```
+  >**from screen**
+  >
+  ```js
+  import { Text, View, TouchableOpacity } from 'react-native'
+  import Icon from 'react-native-vector-icons/FontAwesome';
+  import * as Navigation from "../NavigationRoot";
+  
+      componentDidMount() {
+          this.props.navigation.setOptions({
+              headerRight: () => (
+                  <View style={{ right: 10 }}>
+                      <TouchableOpacity onPress={() => Navigation.navigate('Add')}>
+                          <Icon
+                              name='plus-square'
+                              size={24}
+                              color='black'
+                          />
+                      </TouchableOpacity>
+                  </View >
+              )
+          })
+      }
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

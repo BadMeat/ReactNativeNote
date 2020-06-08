@@ -1,0 +1,30 @@
+createdAt: "2020-05-31T08:24:50.415Z"
+updatedAt: "2020-06-02T15:19:52.217Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Utils"
+tags: []
+content: '''
+  ## Utils
+  
+  **Membuat dot tiap tiga digit***
+  ```js
+  export const currencyFormatDE = (num) => {
+      return (
+          num
+              .toFixed(0) // always two decimal digits
+              .replace('.', ',') // replace decimal point character with ,
+              .replace(/(\\d)(?=(\\d{3})+(?!\\d))/g, '$1.')
+      ) // use . as a separator
+  }
+  
+  ```
+  
+  **Convert JSON string menjadi number**
+  ```js
+  belanjaBarang[0].anggaran = +belanjaBarang[0].anggaran
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
