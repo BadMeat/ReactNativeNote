@@ -1,0 +1,17 @@
+createdAt: "2020-06-29T01:23:55.349Z"
+updatedAt: "2020-06-29T01:24:32.260Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Generate SHA-1"
+tags: []
+content: '''
+  ## Generate SHA-1
+  
+  Generate SHA-1
+  ```
+  keytool -exportcert -keystore ./android/app/debug.keystore -list -v
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

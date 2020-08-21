@@ -1,0 +1,46 @@
+createdAt: "2020-06-19T05:01:47.648Z"
+updatedAt: "2020-06-19T05:02:32.185Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Biar tidak rerender"
+tags: []
+content: '''
+  ## Biar tidak rerender 
+  
+  ```js
+  import React, { Component } from 'react';
+  import { render } from 'react-dom';
+  
+  class App extends React.Component { 
+    state = { 
+      value: 0, 
+    }
+  
+    add = () => {
+      this.setState({ value: this.state.value + 1});
+    } 
+  
+    shouldComponentUpdate(nextProps, nextState) { 
+      if (nextState.value !== 3) { 
+        return false;
+      }
+      return true;
+    }
+  
+    render() { 
+      return (
+        <React.Fragment>
+          <p>Value is: {this.state.value}</p>
+          <button onClick={this.add}>add</button>
+        </React.Fragment>
+      )
+    }
+  }
+  
+  render(<App />, document.getElementById('root'));
+  
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

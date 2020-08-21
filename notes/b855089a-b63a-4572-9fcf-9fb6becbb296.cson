@@ -1,0 +1,49 @@
+createdAt: "2020-06-23T03:50:46.862Z"
+updatedAt: "2020-06-23T06:12:59.222Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Generate Release APK"
+tags: []
+content: '''
+  ## Generate Release APK
+  
+  [How to Generate a React Native Release Build APK for Android](https://www.instamobile.io/android-development/generate-react-native-release-build-android/)
+  
+  keytool -genkey -v -keystore your_key_name.keystore -alias your_key_alias -keyalg RSA -keysize 2048 -validity 10000
+  
+  Kemudian copy dan paste keystorenya ke dalam android/app
+  
+  Masuk ke dalam app/build.gradle
+  ```gradle
+      signingConfigs {
+  ...
+          release {
+              storeFile file('arif_key.keystore')
+              storePassword System.getenv("KEYSTORE_PASSWORD")
+              keyAlias System.getenv("KEY_ALIAS")
+              keyPassword System.getenv("KEY_PASSWORD")
+          }
+      }
+  ```
+  
+  Jangan lupa untuk di save, kemudian check folder assets di android/app/src/main/assets kalau belum ada buat folder assets. Run 
+  
+  ```
+  react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle  --assets-dest android/app/src/main/res/
+  ```
+  
+  
+  ```
+  cd android
+  ./gradlew assembleRelease
+  ```
+  
+  Common error 
+  Hapus drawable dari project
+  ```
+  rm  android/app/src/main/res/drawable-* -r -force
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

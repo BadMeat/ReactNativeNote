@@ -1,0 +1,18 @@
+createdAt: "2020-06-09T19:32:44.355Z"
+updatedAt: "2020-06-09T19:33:05.057Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Install"
+tags: []
+content: '''
+  ## Install
+  
+  ```
+  npm install -g react-native-cli
+  install node.js
+  install npm
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
