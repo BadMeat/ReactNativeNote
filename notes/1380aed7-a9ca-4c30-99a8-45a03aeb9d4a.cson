@@ -1,0 +1,44 @@
+createdAt: "2020-08-24T06:47:34.885Z"
+updatedAt: "2020-09-24T07:07:54.775Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "ICON APP"
+tags: []
+content: '''
+  ## ICON APP
+  
+  Plugin pake ini
+  [GitHub - bamlab/react-native-make: A collection of everyday React Native CLI tools](https://github.com/bamlab/react-native-make)
+  
+  ```
+  npm i '@bam.tech/react-native-make'
+  ```
+  
+  Untuk Android
+  
+  ```js
+  react-native set-icon --platform android --path path-to-image
+  ```
+  Contoh
+  react-native set-icon --platform android --path src/ic_logo.jpg
+  
+  
+  Untuk IOS
+  ```js
+  react-native set-icon --platform ios --path path-to-image
+  ```
+  
+  ---
+  >**Splash Screen**
+  >
+  ```
+  npm i react-native-splash-screen --save
+  ```
+  **Contoh**
+  ```
+  react-native set-splash --platform android --path src/SplashIcon.jpg --resize contain --background "#28df99"
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

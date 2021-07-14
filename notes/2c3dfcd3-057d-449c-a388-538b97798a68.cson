@@ -1,0 +1,39 @@
+createdAt: "2020-08-28T09:20:35.267Z"
+updatedAt: "2020-08-28T09:43:26.373Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Build Apk Release"
+tags: []
+content: '''
+  ## Build Apk Release
+  
+  **Source**
+  [Publishing to Google Play Store · React Native](https://reactnative.dev/docs/signed-apk-android)
+  [How to Generate a React Native Release Build APK for Android](https://www.instamobile.io/android-development/generate-react-native-release-build-android/)
+  
+  **Khusus SVG**
+  ```js
+  -keep public class com.horcrux.svg.** {*;}
+  ```
+  ```
+  tambahkan di android/app/proguard-rules.pro
+  ```
+  
+  **Untuk debug hp**
+  ```
+  adb logcat *:E
+  ```
+  
+  **Untuk build apk**
+  ```
+  ./gradlew assembleRelease
+  ```
+  
+  **Untuk build aab**
+  ```
+  ./gradlew bundleRelease
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

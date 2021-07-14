@@ -1,12 +1,13 @@
 createdAt: "2020-02-11T02:11:54.461Z"
-updatedAt: "2020-02-27T09:37:49.909Z"
+updatedAt: "2020-12-16T04:54:35.051Z"
 type: "MARKDOWN_NOTE"
 folder: "c31af992c900a03da312"
 title: "Navigation"
 tags: []
 content: '''
-  ## Navigation
+  # Navigation
   
+  ## Install
   ```
   - npm install @react-navigation/native @react-navigation/stack
   ```
@@ -20,6 +21,7 @@ content: '''
   ```
   https://facebook.github.io/react-native/docs/navigation#react-navigation
   ```
+  ## Contoh
   >**App.js**
   >
   
@@ -172,7 +174,7 @@ content: '''
   
   ```
   
-  >**Passing param**
+  ## Passing param
   ```js
   -- Lempar
   <Button
@@ -202,8 +204,8 @@ content: '''
   this.props.route.params.showAll()
   ```
   
-  >**Button di toolbar Header diset melalui Screen**
-  >
+  ## Button di toolbar Header diset melalui Screen
+  
   
   ```js
   this.props.navigation.setOptions({
@@ -223,8 +225,8 @@ content: '''
   )
   ```
   
-  >**Custom Header di Screen**
-  >
+  ## Custom Header di Screen
+  
   
   ```js
   this.props.navigation.setOptions({
@@ -245,15 +247,15 @@ content: '''
   })
   ```
   
-  >**Jika Error Navigation, di navigation-screen terumata**
-  >
+  ## Jika Error Navigation, di navigation-screen terumata
+  
   ```xml
   implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
   implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'
   ```
   
-  >**Navigate Without props**
-  >
+  ## Navigate Without props
+  **Root Navigation.js**
   ```js
   import * as React from 'react'
   
@@ -263,7 +265,7 @@ content: '''
       navigationRef.current?.navigate(name, params)
   }
   ```
-  
+  **Router.js**
   ```js
   function App() {
     return (
@@ -272,7 +274,7 @@ content: '''
         .....
   }
   ```
-  
+  **Implementnya**
   ```js
   import * as RootNavigation from '../RootNavigation'
   
@@ -282,6 +284,12 @@ content: '''
   .....
   }
   ```
+  
+  <!-- toc -->
+  
+  
+  [toc]
+  <!-- tocstop -->
 '''
 linesHighlighted: []
 isStarred: false

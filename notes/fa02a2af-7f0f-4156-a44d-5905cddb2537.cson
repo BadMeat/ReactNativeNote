@@ -1,0 +1,243 @@
+createdAt: "2020-11-12T00:02:26.905Z"
+updatedAt: "2020-12-21T06:47:45.352Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Modal"
+tags: []
+content: '''
+  # Modal
+  
+  ## Main Caller
+  
+  
+  ```js
+      constructor() {
+          super()
+          this.state = {
+              isQuickSave: true
+          }
+      }
+      
+      setVisibilityQuickModal = (enable) => {
+          this.setState({
+              isQuickSave: enable
+          })
+      }
+      
+      <QuickSaveModal isQuickSave={this.state.isQuickSave} setVisibilityQuickModal={this.setVisibilityQuickModal} />
+  ```
+  
+  >**Modal**
+  >
+  ```js
+  import React, { Component } from 'react'
+  import {
+      Alert,
+      Dimensions,
+      Modal,
+      StyleSheet,
+      Text,
+      TouchableHighlight,
+      TouchableWithoutFeedback,
+      View
+  } from "react-native";
+  import { InputNamaComponent, InputHargaComponent, InputTanggalComponent } from "../Common";
+  import { dailySaveData } from "../../Actions";
+  import { connect } from 'react-redux';
+  import { Image } from 'react-native-elements';
+  import { TouchableOpacity } from 'react-native-gesture-handler';
+  
+  const styles = StyleSheet.create({
+      centeredView: {
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: 22
+      },
+      modalView: {
+          margin: 20,
+          backgroundColor: "white",
+          borderRadius: 20,
+          padding: 35,
+          alignItems: "center",
+          shadowColor: "#000",
+          width: Dimensions.get('screen').width / 1.2,
+          shadowOffset: {
+              width: 0,
+              height: 2
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.84,
+          elevation: 5
+      },
+      openButton: {
+          backgroundColor: "#F194FF",
+          borderRadius: 20,
+          padding: 10,
+          elevation: 2
+      },
+      textStyle: {
+          color: "white",
+          fontWeight: "bold",
+          textAlign: "center"
+      },
+      modalText: {
+          marginBottom: 15,
+          textAlign: "center"
+      }
+  });
+  
+  
+  class QuickSaveModal extends Component {
+  
+      constructor() {
+          super()
+          this.state = {
+              value: 'kosong',
+              harga: 0,
+              dateDisplay: '',
+              date: new Date()
+          }
+      }
+  
+      setNameValue = (value) => {
+          this.setState({ value })
+      }
+  
+      setHargaValue = (harga) => {
+          this.setState({ harga })
+      }
+  
+      setDateValue = (dateDisplay, date) => {
+          this.setState({ dateDisplay, date })
+      }
+  
+      saveDailyAction = () => {
+          this.props.dailySaveData(this.state.value, this.state.harga, this.state.date, this.state.dateDisplay)
+      }
+  
+      render() {
+          return (
+                  <Modal
+                      animationType="slide"
+                      transparent={true}
+                      visible={this.props.isQuickSave}
+                      onRequestClose={() => {
+                          this.props.setVisibilityQuickModal(false)
+                      }}
+                  >
+                      <View style={styles.centeredView}>
+                          <View style={{ alignItems: 'flex-end', width: Dimensions.get('screen').width / 1.2, marginEnd: 30 }}>
+                              <Image
+                                  style={{ width: 30, height: 30 }}
+                                  source={require("../../assets/images/close.png")} />
+                          </View>
+                          <View style={styles.modalView}>
+                              <InputNamaComponent setValue={this.setNameValue} styles={{ width: Dimensions.get('screen').width / 1.2, padding: 10 }} />
+                              <InputHargaComponent setValue={this.setHargaValue} styles={{ width: Dimensions.get('screen').width / 1.2, padding: 10 }} />
+                              <InputTanggalComponent setValue={this.setDateValue} styles={{ width: Dimensions.get('screen').width / 1.2, padding: 10 }} />
+                              <TouchableHighlight
+                                  style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
+                                  onPress={() => {
+                                      this.saveDailyAction()
+                                      this.props.setVisibilityQuickModal(false)
+                                  }}
+                              >
+                                  <Text style={styles.textStyle}>Simpan</Text>
+                              </TouchableHighlight>
+                              <TouchableHighlight
+                                  style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
+                                  onPress={() => {
+                                      this.props.setVisibilityQuickModal(false);
+                                  }}
+                              >
+                                  <Text style={styles.textStyle}>Hide Modal</Text>
+                              </TouchableHighlight>
+                          </View>
+                      </View>
+                  </Modal>
+          )
+      }
+  }
+  
+  
+  const mapStateToProps = (state) => {
+      const { dailyLoading } = state.daily
+      return { dailyLoading }
+  }
+  
+  export default connect(mapStateToProps, { dailySaveData })(QuickSaveModal)
+  ```
+  
+  ## hide modal Ketika pencet selain modal
+  **Modal**
+  ```js
+              <Modal
+                  animationType="fade"
+                  transparent={true}
+                  visible={this.props.isQuickSave}
+              >
+                  <TouchableOpacity
+                      activeOpacity={1}
+                      onPress={() => this.props.setVisibilityQuickModal(false)}
+                      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} >
+                      <TouchableWithoutFeedback style={styles.layoutSize} activeOpacity={1}>
+                          <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                              <View style={[styles.layoutSize, {
+                                  borderRadius: 20,
+                                  shadowColor: "#000",
+                                  shadowOffset: {
+                                      width: 0,
+                                      height: 2
+                                  },
+                                  shadowOpacity: 0.25,
+                                  shadowRadius: 3.84,
+                                  elevation: 5,
+                                  backgroundColor: 'green'
+                              }]}>
+                                  <View style={{ width: Dimensions.get('screen').width / 1.2, justifyContent: 'center' }}>
+                                      <TouchableOpacity onPress={() => this.props.setVisibilityQuickModal(false)} style={{ margin: 10, borderRadius: 10, backgroundColor: '#006699', padding: 10, alignItems: 'center', marginHorizontal: 20 }}>
+                                          <Text>Yuk Pencetr KLeluar uhysad</Text>
+                                          <Text style={{ fontFamily: 'Arial-Rounded', color: 'white' }}>Keluar</Text>
+                                      </TouchableOpacity>
+                                  </View>
+  
+                              </View>
+                          </View>
+                      </TouchableWithoutFeedback>
+                  </TouchableOpacity>
+              </Modal>
+  ```
+  **Implement**
+  ```js
+  
+      constructor() {
+          super()
+          this.state = {
+              isQuickSave: false
+          }
+      }
+      
+      setVisibilityQuickModal = (enable) => {
+          this.setState({
+              isQuickSave: enable
+          })
+      }
+      
+      return (
+        <View style={{ alignItems: 'center' }}>
+          ...
+          <QuickSaveModal isQuickSave={this.state.isQuickSave} setVisibilityQuickModal={this.setVisibilityQuickModal} />
+          ...
+      )
+  ```
+  
+  <!-- toc -->
+  [toc]
+  
+  
+  <!-- tocstop -->
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

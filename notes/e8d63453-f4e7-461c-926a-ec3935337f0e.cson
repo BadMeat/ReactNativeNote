@@ -1,11 +1,11 @@
 createdAt: "2020-06-19T05:01:47.648Z"
-updatedAt: "2020-06-19T05:02:32.185Z"
+updatedAt: "2020-12-10T09:00:42.727Z"
 type: "MARKDOWN_NOTE"
 folder: "c31af992c900a03da312"
 title: "Biar tidak rerender"
 tags: []
 content: '''
-  ## Biar tidak rerender 
+  # Biar tidak rerender 
   
   ```js
   import React, { Component } from 'react';

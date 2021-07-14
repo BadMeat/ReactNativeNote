@@ -1,0 +1,47 @@
+createdAt: "2020-12-10T09:40:49.541Z"
+updatedAt: "2020-12-10T09:46:09.823Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Custom Font"
+tags: []
+content: '''
+  # Custom Font
+  
+  ## Custom Font
+  
+  Buat folder, assets/fonts. letakan fontnya disitu. 
+  Kemudian buat file (posisi file, 1 level dengan package.json / dibagian paling luar)
+  
+  **react-native.config.js**
+  ```js
+  module.exports = {
+      project: {
+          ios: {},
+          android: {}, // grouped into "project"
+      },
+      assets: ["./src/assets/fonts/"], // stays the same
+  };
+  ```
+  
+  Kemudian link-an di terminal
+  
+      react-native link
+      
+  harusnya muncul seperti ini
+  ![c090ddc7.png](:storage\\f9bb627a-0884-4b85-9bf1-68c038322a12\\c090ddc7.png)
+  
+  akan create folder di android secara otomatis
+  
+  ## Hapus Custom Font
+      Untuk menghapus custom font hanya dengan cara manual, yaitu dengan masuk ke dalam folder android langsung dan hapus manual
+      
+      
+  <!-- toc -->
+  [toc]
+  
+  
+  <!-- tocstop -->
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

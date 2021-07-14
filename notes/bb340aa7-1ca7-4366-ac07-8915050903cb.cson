@@ -1,0 +1,29 @@
+createdAt: "2020-12-08T07:15:34.390Z"
+updatedAt: "2020-12-08T07:15:53.742Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "StatusBar"
+tags: []
+content: '''
+  # StatusBar
+  
+  ```js
+  export default class App extends Component {
+    render() {
+      return (
+        <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
+          <StatusBar
+            barStyle="dark-content"
+            backgroundColor='green'
+          />
+          <Router />
+        </Provider>
+      )
+    }
+  }
+  
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

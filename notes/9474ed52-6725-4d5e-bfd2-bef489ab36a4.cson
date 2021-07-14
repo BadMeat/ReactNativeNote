@@ -1,5 +1,5 @@
 createdAt: "2020-06-09T19:32:44.355Z"
-updatedAt: "2020-06-09T19:33:05.057Z"
+updatedAt: "2020-08-25T07:16:38.747Z"
 type: "MARKDOWN_NOTE"
 folder: "c31af992c900a03da312"
 title: "Install"
@@ -7,10 +7,33 @@ tags: []
 content: '''
   ## Install
   
+  >**Sumber**
+  ```js
+  https://reactnative.dev/docs/0.60/getting-started
+  ```
+  
+  >**Cara Install**
   ```
   npm install -g react-native-cli
+  install choco (Optional Untuk install node pyhton dll)
   install node.js
-  install npm
+  install phyton
+  install android studio
+  ```
+  
+  >**Setup**
+  >
+  ANDROID_HOME
+  ```
+  Tambahkan path ANDROID_HOME dengan value c:\\Users\\YOUR_USERNAME\\AppData\\Local\\Android\\Sdk 
+  atau bisa cek di android studio di Appearance & Behavior → System Settings → Android SDK.
+  ```
+  
+  Platform-tools
+  ```
+  path sama dengan android nambah lebih dalam. Letakan di tab User Variable for 'USER_NAME' pilih Variable Path dan tambahkan baru, 
+  contoh
+  c:\\Users\\YOUR_USERNAME\\AppData\\Local\\Android\\Sdk\\platform-tools
   ```
 '''
 linesHighlighted: []

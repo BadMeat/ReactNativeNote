@@ -1,13 +1,13 @@
 createdAt: "2020-05-31T08:24:50.415Z"
-updatedAt: "2020-06-15T06:09:32.971Z"
+updatedAt: "2020-12-08T17:23:09.663Z"
 type: "MARKDOWN_NOTE"
 folder: "c31af992c900a03da312"
 title: "Utils"
 tags: []
 content: '''
-  ## Utils
+  # Utils
   
-  **Membuat dot tiap tiga digit***
+  ## Membuat dot tiap tiga digit
   ```js
   export const currencyFormatDE = (num) => {
       return (
@@ -19,16 +19,41 @@ content: '''
   }
   
   ```
-  
-  **Convert JSON string menjadi number**
+  ---
+  ## Convert JSON string menjadi number
   ```js
   belanjaBarang[0].anggaran = +belanjaBarang[0].anggaran
   ```
-  
-  **Split white space**
+  ---
+  ## Split white space
   ```js
   input.split(/[ ,]+/);
   ```
+  ---
+  ## Penguarangan Tanggal
+  ```js
+  const date = new Date()
+  date.setDate(date.getDate() - 60)
+  ```
+  ---
+  ## Center label disamping / wrap text sesuai dengan yg atas
+  ```js
+  <View style={{ alignSelf: 'baseline', alignItems: 'center' }}>
+      <Text>{anggaranRealisasi.realisasiChart.title}</Text>
+      <Text>{anggaranRealisasi.realisasiChart.persen}</Text>
+  </View>
+  ```
+  ---
+  ## Sorting
+  ```js
+  filter.sort((a, b) => a.tanggal - b.tanggal)
+  ```
+  
+  <!-- toc -->
+  [toc]
+  
+  
+  <!-- tocstop -->
 '''
 linesHighlighted: []
 isStarred: false

@@ -1,0 +1,58 @@
+createdAt: "2020-11-10T10:55:06.119Z"
+updatedAt: "2020-11-10T10:57:10.041Z"
+type: "MARKDOWN_NOTE"
+folder: "c31af992c900a03da312"
+title: "Membuat UI Common"
+tags: []
+content: '''
+  ## Membuat UI Common
+  
+  **Buat Folder Common dan buat file index***
+  >**index.js**
+  >
+  ```js
+  export * from './InputHargaComponent'
+  ```
+  
+  **Buat file UI nya**
+  >**InputHargaComponent**
+  >
+  ```js
+  import React, { Component } from 'react'
+  import { Text, View } from 'react-native'
+  import { Input } from 'react-native-elements'
+  
+  class InputHargaComponent extends Component {
+  
+      constructor() {
+          super()
+          this.state = {
+              value: ''
+          }
+      }
+  
+      render() {
+          return (
+              <View>
+                  <Input
+                      onChangeText={(value) => this.setState({ value })}
+                      value={this.state.value}
+                  />
+              </View>
+          )
+      }
+  }
+  
+  export { InputHargaComponent }
+  ```
+  
+  **Cara Memanggilnya**
+  ```js
+  import { InputHargaComponent } from "./Common";
+  
+  <InputHargaComponent/>
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false

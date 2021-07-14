@@ -1,0 +1,46 @@
+createdAt: "2020-12-16T08:10:00.254Z"
+updatedAt: "2020-12-16T08:10:34.206Z"
+type: "MARKDOWN_NOTE"
+folder: "c4686cbedf78bed63642"
+title: "Stack Navigation"
+tags: []
+content: '''
+  # Stack Navigation
+  
+  ## Hide Header
+  ```js
+  ...
+  options={({ navigation, route }) => ({
+      headerTitle: 'Home',
+      headerShown: false
+  })}
+  ...
+  ```
+  ```js
+  const HomeStack = () => (
+      <Stack.Navigator>
+          <Stack.Screen
+              name="Home"
+              component={HomeScreen} // Nama File Screen
+              options={({ navigation, route }) => ({
+                  headerTitle: 'Home',
+                  headerShown: false
+              })}
+          >
+          </Stack.Screen>
+          <Stack.Screen
+              name="DetailHome"
+              component={DetailHomeScreen} // Nama File Screen
+              options={({ navigation, route }) => ({
+                  headerTitle: 'DetailHome',
+                  headerShown: false
+              })}
+          >
+          </Stack.Screen>
+      </Stack.Navigator>
+  )
+  ```
+'''
+linesHighlighted: []
+isStarred: false
+isTrashed: false
